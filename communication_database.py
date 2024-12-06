@@ -1,28 +1,42 @@
 import mysql.connector
-
+import os
 
 def start():
 
-	global mydb
+	global mydb, DATABASE_URL
 
-	'''
+	DATABASE_URL = os.getenv("DATABASE_URL")
+
 	mydb = mysql.connector.connect(
-		host = "mysql.railway.internal",
+		host = os.getenv("MySQL.MYSQLHOST"),
 		#host = "localhost",
-		user = "root",
-		password = "cKEVApuKsAyIQCiRXlRLBoepjUgcqJie"
-		#password = "Nsg@2024"
-		)
-	'''
 
-	mydb = mysql.connector.connect(GIL_DB)
+		user = os.getenv("MySQL.MYSQLUSER"),
+		#user = "root"
+
+		password = os.getenv("MySQL.MYSQLPASSWORD"),
+		#password = "Nsg@2024"
+
+		database = os.getenv("MySQLDATABASE")
+		)
 
 	global mycursor
 
 	mycursor = mydb.cursor()
-	mycursor.execute("SHOW DATABASES")
+	mycursor.execute("SHOW TABLES")
 	results = mycursor.fetchall()
 	print(results)
+
+
+	# Exibir os resultados
+	print(":----- via 'for' -----:")
+	for linha in results:
+		print(linha)
+
+	# Fechar a conexão
+	mycursor.close()
+	mydb.close()
+
 	#mydb.commit()
 
 
