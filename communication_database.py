@@ -6,7 +6,8 @@ def start():
 	global mydb
 
 	mydb = mysql.connector.connect(
-		host = "mysql.railway.internal"
+
+		host = "mysql.railway.internal",
 		#host = "localhost",
 
 		user = "root",
