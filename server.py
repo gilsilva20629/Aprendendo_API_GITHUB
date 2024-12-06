@@ -53,14 +53,14 @@ def home():
 	# ------------ Executar operacoes --------------------
 	
 	if op_type == "1" :	#login
-		response = "OK"+"Hello, Flask on Railway!"
+		response = "OK"+" Hello, Flask on Railway!"
 		print(name)
 		print(password)
 		print(op_type)
 
 		print("???")
-		CDB.start()
-		print("???")
+		#CDB.start()
+		print("xxx")
 
 
 	elif op_type == "2" :
