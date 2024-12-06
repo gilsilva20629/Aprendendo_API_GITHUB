@@ -5,17 +5,17 @@ def start():
 
 	global mydb
 
+	'''
 	mydb = mysql.connector.connect(
-
 		host = "mysql.railway.internal",
 		#host = "localhost",
-
 		user = "root",
-
 		password = "cKEVApuKsAyIQCiRXlRLBoepjUgcqJie"
 		#password = "Nsg@2024"
-
 		)
+	'''
+	
+	mydb = mysql.connector.connect(DB_NICKNAME)
 
 	global mycursor
 
