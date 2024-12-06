@@ -58,6 +58,10 @@ def home():
 		print(password)
 		print(op_type)
 
+		print("???")
+    	CDB.start()
+    	print("???")
+
 
 	elif op_type == "2" :
 		pass
@@ -79,7 +83,3 @@ def home():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000 , debug=True)
-
-    print("???")
-    CDB.start()
-    print("???")
