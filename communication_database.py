@@ -14,8 +14,8 @@ def start():
 		#password = "Nsg@2024"
 		)
 	'''
-	
-	mydb = mysql.connector.connect(DB_NICKNAME)
+
+	mydb = mysql.connector.connect(GIL_DB)
 
 	global mycursor
 
