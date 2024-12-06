@@ -59,8 +59,8 @@ def home():
 		print(op_type)
 
 		print("???")
-    	CDB.start()
-    	print("???")
+		CDB.start()
+		print("???")
 
 
 	elif op_type == "2" :
