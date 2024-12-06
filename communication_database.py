@@ -6,7 +6,9 @@ def start():
 	global mydb, DATABASE_URL
 
 	DATABASE_URL = os.getenv("DATABASE_URL")
+	print(DATABASE_URL)
 
+	'''
 	mydb = mysql.connector.connect(
 		host = os.getenv("MySQL.MYSQLHOST"),
 		#host = "localhost",
@@ -19,6 +21,9 @@ def start():
 
 		database = os.getenv("MySQLDATABASE")
 		)
+	'''
+
+	mydb = mysql.connector.connect(DATABASE_URL)
 
 	global mycursor
 
