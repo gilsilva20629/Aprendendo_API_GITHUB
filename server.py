@@ -1,6 +1,15 @@
 from flask import Flask, request
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # Isso permite CORS para todas as rotas
+
+	'''
+	Cross-Origin Resource Sharing (CORS) - HTTP | MDN - MDN Web Docs
+	O padrão Cross-Origin Resource Sharing trabalha adicionando novos cabeçalhos HTTP
+	que permitem que os servidores descrevam um conjunto de origens que possuem permissão a ler uma informação usando o navegador.
+	'''
+
 
 @app.route('/my_endpoint', methods=['POST'])
 def home():
@@ -47,7 +56,7 @@ def home():
 		print(name)
 		print(password)
 		print(op_type)
-		
+
 	elif op_type == "2" :
 		pass
 	elif op_type == "3" :
