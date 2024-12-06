@@ -43,7 +43,7 @@ def home():
 	# ------------ Executar operacoes --------------------
 	
 	if op_type == "1" :	#login
-		response = "OK"
+		response = "OK"+"Hello, Flask on Railway!"
 	elif op_type == "2" :
 		pass
 	elif op_type == "3" :
