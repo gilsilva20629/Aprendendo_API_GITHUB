@@ -44,6 +44,10 @@ def home():
 	
 	if op_type == "1" :	#login
 		response = "OK"+"Hello, Flask on Railway!"
+		print(name)
+		print(password)
+		print(op_type)
+		
 	elif op_type == "2" :
 		pass
 	elif op_type == "3" :
