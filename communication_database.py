@@ -7,11 +7,11 @@ def start():
 
 	DATABASE_URL = os.getenv("DATABASE_URL")
 	print(DATABASE_URL)
-	print("MYSQLHOST:", type(os.getenv("MySQL.MYSQLHOST")))
-	print("MYSQLPORT:", type(os.getenv("MySQL.MYSQLPORT")))
-	print("MYSQLUSER:", type(os.getenv("MySQL.MYSQLUSER")))
-	print("MYSQLPASSWORD:", type(os.getenv("MySQL.MYSQLPASSWORD")))
-	print("MySQLDATABASE:", type(os.getenv("MySQL.MySQLDATABASE")))
+	print("MYSQLHOST:", type(os.getenv("MYSQLHOST")))
+	print("MYSQLPORT:", type(os.getenv("MYSQLPORT")))
+	print("MYSQLUSER:", type(os.getenv("MYSQLUSER")))
+	print("MYSQLPASSWORD:", type(os.getenv("MYSQLPASSWORD")))
+	print("MySQLDATABASE:", type(os.getenv("MySQLDATABASE")))
 
 
 	#mydb = mysql.connector.connect(DATABASE_URL)
@@ -37,6 +37,8 @@ def start():
 	mycursor.execute("SHOW TABLES")
 	results = mycursor.fetchall()
 	print(results)
+	
+
 
 
 	# Exibir os resultados
