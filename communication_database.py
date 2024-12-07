@@ -15,17 +15,20 @@ def start():
 
 
 	#mydb = mysql.connector.connect(DATABASE_URL)
-	
-	mydb = mysql.connector.connect(
-		host = os.getenv("MySQL.MYSQLHOST"),
-		#host = "localhost",
-		port = 3306, # os.getenv("MySQL.MYSQLPORT"),
-		user = os.getenv("MySQL.MYSQLUSER"),
-		#user = "root"
-		password = os.getenv("MySQL.MYSQLPASSWORD"),
-		#password = "Nsg@2024"
-		database = os.getenv("MySQLDATABASE")
-		)
+	try:
+		mydb = mysql.connector.connect(
+			host = os.getenv("MYSQLHOST"),
+			#host = "localhost",
+			port = os.getenv("MYSQLPORT"),
+			user = os.getenv("MYSQLUSER"),
+			#user = "root"
+			password = os.getenv("MYSQLPASSWORD"),
+			#password = "Nsg@2024"
+			database = os.getenv("MYSQLDATABASE")
+			)
+	except Exception as err:
+		print(err, type(err))
+		return "erro: deu merda!"
 	
 
 	global mycursor
@@ -48,7 +51,7 @@ def start():
 	#mydb.commit()
 
 
-
+	return "OK"+" Hello, Flask on Railway!"
 
 
 
