@@ -7,14 +7,19 @@ def start():
 
 	DATABASE_URL = os.getenv("DATABASE_URL")
 	print(DATABASE_URL)
-	print("tipo da porta:", type(os.getenv("MySQL.MYSQLPORT")))
+	print("MYSQLHOST:", type(os.getenv("MySQL.MYSQLHOST")))
+	print("MYSQLPORT:", type(os.getenv("MySQL.MYSQLPORT")))
+	print("MYSQLUSER:", type(os.getenv("MySQL.MYSQLUSER")))
+	print("MYSQLPASSWORD:", type(os.getenv("MySQL.MYSQLPASSWORD")))
+	print("MySQLDATABASE:", type(os.getenv("MySQL.MySQLDATABASE")))
+
 
 	#mydb = mysql.connector.connect(DATABASE_URL)
 	
 	mydb = mysql.connector.connect(
 		host = os.getenv("MySQL.MYSQLHOST"),
 		#host = "localhost",
-		port = os.getenv("MySQL.MYSQLPORT"),
+		port = 3306, # os.getenv("MySQL.MYSQLPORT"),
 		user = os.getenv("MySQL.MYSQLUSER"),
 		#user = "root"
 		password = os.getenv("MySQL.MYSQLPASSWORD"),
