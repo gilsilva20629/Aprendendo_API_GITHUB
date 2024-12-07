@@ -58,9 +58,9 @@ def home():
 		print(password)
 		print(op_type)
 
-		print("???")
-		#CDB.start()
-		print("xxx")
+		
+		CDB.start()
+		
 
 
 	elif op_type == "2" :

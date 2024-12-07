@@ -8,22 +8,19 @@ def start():
 	DATABASE_URL = os.getenv("DATABASE_URL")
 	print(DATABASE_URL)
 
-	'''
+	#mydb = mysql.connector.connect(DATABASE_URL)
+	
 	mydb = mysql.connector.connect(
 		host = os.getenv("MySQL.MYSQLHOST"),
 		#host = "localhost",
-
+		port = os.getenv("MySQL.MYSQLPORT"),
 		user = os.getenv("MySQL.MYSQLUSER"),
 		#user = "root"
-
 		password = os.getenv("MySQL.MYSQLPASSWORD"),
 		#password = "Nsg@2024"
-
 		database = os.getenv("MySQLDATABASE")
 		)
-	'''
-
-	mydb = mysql.connector.connect(DATABASE_URL)
+	
 
 	global mycursor
 
