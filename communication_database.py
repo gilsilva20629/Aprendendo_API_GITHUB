@@ -7,6 +7,7 @@ def start():
 
 	DATABASE_URL = os.getenv("DATABASE_URL")
 	print(DATABASE_URL)
+	print("tipo da porta:", type(os.getenv("MySQL.MYSQLPORT")))
 
 	#mydb = mysql.connector.connect(DATABASE_URL)
 	
