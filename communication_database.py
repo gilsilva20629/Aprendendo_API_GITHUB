@@ -61,8 +61,8 @@ def exit():
 def command_extra(command=None):
 	if command :
 		try:
-			print(command.split(";"))
 			
+
 			for c in command.split(";") :
 				mycursor.execute(c)
 
@@ -71,6 +71,10 @@ def command_extra(command=None):
 
 def add_user(user, command_extra=None):
 	start()
+
+	for c in command.split(";")
+		print(c, type(c))
+
 	command_extra(command_extra)
 
 	sql = "INSERT INTO user(id, name, password, `group`) VALUES(%s, %s, %s, %s)"
