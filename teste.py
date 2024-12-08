@@ -86,7 +86,7 @@ def teste_request():
 def outhers():
 	import user
 	import communication_database as CDB
-	
+
 	cmd_x = "DROP TABLE usuario;CREATE TABLE usuario(	\
 	id varchar(36),	\
 	name varchar(16),	\
@@ -102,4 +102,4 @@ def outhers():
 
 
 if __name__ == "__main__":
-	
+	pass
