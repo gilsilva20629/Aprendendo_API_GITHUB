@@ -1,6 +1,8 @@
 from flask import Flask, request
 from flask_cors import CORS
 import communication_database as CDB
+import user
+import teste
 
 app = Flask(__name__)
 CORS(app)  # Isso permite CORS para todas as rotas
@@ -37,6 +39,9 @@ def home():
 
 	# ------------ Executar Testes --------------------
 
+	teste.outhers()
+
+
 	'''
 	print(request.status_code)
 	print(request.url)
@@ -53,15 +58,7 @@ def home():
 	# ------------ Executar operacoes --------------------
 	
 	if op_type == "1" :	#login
-		print(name)
-		print(password)
-		print(op_type)
-
-		
-		response = CDB.start()
-		
-
-
+		response = "OK"
 	elif op_type == "2" :
 		pass
 	elif op_type == "3" :

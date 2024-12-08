@@ -3,18 +3,15 @@ import os
 
 def start():
 
-	global mydb, DATABASE_URL
-
+	MYSQLHOST = os.getenv("MYSQLHOST")
+	MYSQLPORT = os.getenv("MYSQLPORT")
+	MYSQLUSER = os.getenv("MYSQLUSER")
+	MYSQLPASSWORD = os.getenv("MYSQLPASSWORD")
+	MYSQLDATABASE = os.getenv("MYSQLDATABASE")
 	DATABASE_URL = os.getenv("DATABASE_URL")
-	print(DATABASE_URL)
-	print("MYSQLHOST:", type(os.getenv("MYSQLHOST")))
-	print("MYSQLPORT:", type(os.getenv("MYSQLPORT")))
-	print("MYSQLUSER:", type(os.getenv("MYSQLUSER")))
-	print("MYSQLPASSWORD:", type(os.getenv("MYSQLPASSWORD")))
-	print("MySQLDATABASE:", type(os.getenv("MySQLDATABASE")))
 
+	global mydb, mycursor
 
-	#mydb = mysql.connector.connect(DATABASE_URL)
 	try:
 		mydb = mysql.connector.connect(
 			host = os.getenv("MYSQLHOST"),
@@ -28,19 +25,18 @@ def start():
 			)
 	except Exception as err:
 		print(err, type(err))
-		return "erro: deu merda!"
+		return "Erro: Não foi possivel conectar ao database!"
 	
-
-	global mycursor
-
 	mycursor = mydb.cursor()
+
+	return "Connected in BD..."
+
+	'''
 	mycursor.execute("SHOW TABLES")
+	mycursor.execute("DROP TABLE usuario")
 	results = mycursor.fetchall()
 	print(results)
 	
-
-
-
 	# Exibir os resultados
 	print(":----- via 'for' -----:")
 	for linha in results:
@@ -51,57 +47,30 @@ def start():
 	mydb.close()
 
 	#mydb.commit()
+	'''
 
 
-	return "OK"+" Hello, Flask on Railway!"
+def quit():
+	mycursor.close()
+	mydb.close()
 
+def exit():
+	mycursor.close()
+	mydb.close()
 
+def command_extra(command=None):
+	if command :
+		try:
+			
+			for c in command.split(";") :
+				mycursor.execute(c)
 
+		except Exception as err:
+			print("command extra falhou!")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-#######################################################################################
-def add_user(user):
+def add_user(user, command_extra=None):
 	start()
+	command_extra(command_extra)
 
 	sql = "INSERT INTO user(id, name, password, `group`) VALUES(%s, %s, %s, %s)"
 	values = (user.id, user.name, user.password, user.group)
@@ -109,10 +78,13 @@ def add_user(user):
 	mycursor.execute(sql, values)
 	mydb.commit()
 	print(mycursor.rowcount, "Record Inserted.")
+	exit()
 
-
-def search_user(name=None, user_id=None, group=None):
+'''
+###########################################
+def search_user(name=None, user_id=None, group=None, command_extra=None):
 	start()
+	command_extra(command_extra)
 
 	n = []
 	u = []
@@ -154,34 +126,41 @@ def search_user(name=None, user_id=None, group=None):
 				if group == i[3] :
 					#print(i)
 					g.append(i)	
-	
+	exit()
 	return n, u, g	
 
 
 		
-def list_users():
+def list_users(command_extra=None):
 	start()
+	command_extra(command_extra)
 	mycursor.execute("SELECT user_id, name, `group` FROM user")
 	results = mycursor.fetchall()
+	exit()
 	return results
 
-def remove(u_id):
+def remove(u_id, command_extra=None):
 	start()
+	command_extra(command_extra)
 	mycursor.execute(f"DELETE FROM user WHERE user_id={u_id}")
 	mydb.commit()
 	print(mycursor.rowcount, "Record(s) Deleted.")
+	exit()
 
-def login(name, password):
+def login(name, password, command_extra=None):
 	start()
+	command_extra(command_extra)
 	flag = True
 	results = search_user(name)[0]
 
 	for r in results:
 		if name in r:
 			if password == (r[2])[0:16] :
+				exit()
 				return flag
 			else:
 				flag = False
+				exit()
 				return flag
 		
 '''
