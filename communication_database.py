@@ -61,6 +61,7 @@ def exit():
 def command_extra(command=None):
 	if command :
 		try:
+			print(command.split(";"))
 			
 			for c in command.split(";") :
 				mycursor.execute(c)
