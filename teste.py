@@ -96,7 +96,7 @@ def outhers():
 
 	for i in range(10):
 		name, password, group = user.genarate_info_user()
-		u = User(name,password, group)
+		u = user.User(name,password, group)
 		response = CDB.add_user(u, cmd_x)
 		cmd_x = None
 
