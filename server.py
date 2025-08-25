@@ -34,13 +34,13 @@ def home():
 		password = request.json.get("password")
 		op_type = request.json.get("extra")
 	else:
-		response = "content/media type do not supported: "+request.headers["Content-Type"]
-		print(response)
+		resposta = "content/media type do not supported: "+request.headers["Content-Type"]
+		print(resposta)
 
 	# ------------ Executar Testes --------------------
 
 	print(request.json)
-	
+
 	#teste.outhers()
 
 
@@ -60,7 +60,7 @@ def home():
 	# ------------ Executar operacoes --------------------
 	
 	if op_type == "1" :	#login
-		response = "OK"
+		resposta = "OK"
 	elif op_type == "2" :
 		pass
 	elif op_type == "3" :
@@ -76,7 +76,7 @@ def home():
 
 	
 	# ------------ Resposta --------------------------
-	return response
+	return resposta
 	
 
 if __name__ == '__main__':
