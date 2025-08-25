@@ -39,7 +39,7 @@ def home():
 
 	# ------------ Executar Testes --------------------
 
-	teste.outhers()
+	#teste.outhers()
 
 
 	'''
