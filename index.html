@@ -26,7 +26,7 @@
 
 				//document.getElementById("form1").submit();	//manda requisicao sem capturar retorno
 				
-				fetch("http://127.0.0.1:5000/my_endpoint", {
+				fetch("https://aprendendoapigithub-production.up.railway.app/my_endpoint", {
 					method: 'POST',
                 	headers: {
                 		'Content-Type': 'application/json',
@@ -69,7 +69,7 @@
 	<body>
 		<h1>Login & authentication Page</h1>
 		<!-- ###############  FORMULARIO  ############### -->
-		<form id="form1" action="http://127.0.0.1:5000/my_endpoint" method="post" target="_blank" onsubmit="validateForm(event)">
+		<form id="form1" action="https://aprendendoapigithub-production.up.railway.app/my_endpoint" method="post" target="_blank" onsubmit="validateForm(event)">
 			<label>name user</label><br>
 			<input id="name_user" type="text" name="name_user" value="" required> </br>
 			<label>password<label><br>
