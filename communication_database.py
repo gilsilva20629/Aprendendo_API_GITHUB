@@ -72,7 +72,7 @@ def command_extra(command=None):
 def add_user(user, command_extra=None):
 	start()
 
-	for c in command.split(";")
+	for c in command.split(";"):
 		print(c, type(c))
 
 	command_extra(command_extra)
