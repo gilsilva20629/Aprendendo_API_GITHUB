@@ -39,6 +39,8 @@ def home():
 
 	# ------------ Executar Testes --------------------
 
+	print(request.json)
+	
 	#teste.outhers()
 
 
