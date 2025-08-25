@@ -12,8 +12,7 @@
 			}
 
 			function validateForm(event){
-				 // Impede o envio do formulário
-				event.preventDefault();
+				event.preventDefault();	// // Impede o envio imediato do formulário.
 
 				//Captura os campos
 				const name_user = document.getElementById("name_user").value;
@@ -26,7 +25,9 @@
 
 				//document.getElementById("form1").submit();	//manda requisicao sem capturar retorno
 				
-				fetch("https://aprendendoapigithub-production.up.railway.app/my_endpoint", {
+				//fetch("https://aprendendoapigithub-production.up.railway.app/my_endpoint", {
+				fetch("http://127.0.0.1:5000/my_endpoint", {	// localhost teste
+
 					method: 'POST',
                 	headers: {
                 		'Content-Type': 'application/json',
