@@ -77,11 +77,11 @@ def add_user(user, command_x=None):
 
 	command_extra(command_x)
 
-	sql = "INSERT INTO user(id, name, password, group) VALUES(%s, %s, %s, %s)"
-	values = (user.id, user.name, user.password, user.group)
+	sql = "INSERT INTO user(id, name, password, tipo) VALUES(%s, %s, %s, %s)"
+	values = (user.id, user.name, user.password, user.tipo)
 
-	#sql = "INSERT INTO user(id, name, password, `group`) VALUES(%s, %s, %s, %s)"
-	#values = (user.id, user.name, user.password, user.group)
+	#sql = "INSERT INTO user(id, name, password, `tipo`) VALUES(%s, %s, %s, %s)"
+	#values = (user.id, user.name, user.password, user.tipo)
 
 	mycursor.execute(sql, values)
 	mydb.commit()
@@ -90,7 +90,7 @@ def add_user(user, command_x=None):
 
 '''
 ###########################################
-def search_user(name=None, user_id=None, group=None, command_extra=None):
+def search_user(name=None, user_id=None, tipo=None, command_extra=None):
 	start()
 	command_extra(command_extra)
 
@@ -98,7 +98,7 @@ def search_user(name=None, user_id=None, group=None, command_extra=None):
 	u = []
 	g = []
 
-	if name == None and user_id == None and group == None :
+	if name == None and user_id == None and tipo == None :
 		return "Ivalid parameters!"
 
 	else:
@@ -128,10 +128,10 @@ def search_user(name=None, user_id=None, group=None, command_extra=None):
 					#print(i)
 					u.append(i)
 		
-		if group is not None:
-			#print(f"group: __________ __________ __________ {group}")
+		if tipo is not None:
+			#print(f"tipo: __________ __________ __________ {tipo}")
 			for i in results:
-				if group == i[3] :
+				if tipo == i[3] :
 					#print(i)
 					g.append(i)	
 	exit()
@@ -142,7 +142,7 @@ def search_user(name=None, user_id=None, group=None, command_extra=None):
 def list_users(command_extra=None):
 	start()
 	command_extra(command_extra)
-	mycursor.execute("SELECT user_id, name, `group` FROM user")
+	mycursor.execute("SELECT user_id, name, `tipo` FROM user")
 	results = mycursor.fetchall()
 	exit()
 	return results

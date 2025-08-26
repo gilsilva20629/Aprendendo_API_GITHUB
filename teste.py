@@ -19,9 +19,9 @@ def teste_user():
 	from database import communication_database as CDB
 	
 	for i in range(10):
-		name, password, group = user.genarate_info_user()
+		name, password, tipos = user.genarate_info_user()
 
-		u = user.User(name, password, group)
+		u = user.User(name, password, tipos)
 
 		CDB.add_user(u)
 		
@@ -86,7 +86,7 @@ def teste_request():
 def outhers():
 	import user
 	import communication_database as CDB
-
+	'''
 	cmd_x = "CREATE TABLE user(\
 	id varchar(36),\
 	name varchar(16),\
@@ -94,16 +94,11 @@ def outhers():
 	user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT\
 	)"
 	'''
-	cmd_x = "DROP TABLE user;CREATE TABLE user(\
-	id varchar(36),\
-	name varchar(16),\
-	password varchar(81),\
-	user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT\
-	)"
-	'''
+	cmd_x = "DROP TABLE user;DROP TABLE usuario;CREATE TABLE user(id varchar(36),name varchar(16),password varchar(81),user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT)"
+	
 	for i in range(10):
-		name, password, group = user.genarate_info_user()
-		u = user.User(name,password, group)
+		name, password, tipos = user.genarate_info_user()
+		u = user.User(name,password, tipos)
 		response = CDB.add_user(u, cmd_x)
 		cmd_x = None
 
