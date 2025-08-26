@@ -69,13 +69,13 @@ def command_extra(command=None):
 		except Exception as err:
 			print("command extra falhou!")
 
-def add_user(user, command_extra=None):
+def add_user(user, command_x=None):
 	start()
 
-	for c in command.split(";"):
+	for c in command_x.split(";"):
 		print(c, type(c))
 
-	command_extra(command_extra)
+	command_extra(command_x)
 
 	sql = "INSERT INTO user(id, name, password, `group`) VALUES(%s, %s, %s, %s)"
 	values = (user.id, user.name, user.password, user.group)

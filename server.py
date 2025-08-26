@@ -41,7 +41,7 @@ def home():
 
 	print(request.json)
 	CDB.start()
-	#teste.outhers()
+	teste.outhers()
 
 
 	'''
