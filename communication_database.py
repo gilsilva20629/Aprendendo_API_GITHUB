@@ -77,8 +77,11 @@ def add_user(user, command_x=None):
 
 	command_extra(command_x)
 
-	sql = "INSERT INTO user(id, name, password, `group`) VALUES(%s, %s, %s, %s)"
+	sql = "INSERT INTO user(id, name, password, group) VALUES(%s, %s, %s, %s)"
 	values = (user.id, user.name, user.password, user.group)
+
+	#sql = "INSERT INTO user(id, name, password, `group`) VALUES(%s, %s, %s, %s)"
+	#values = (user.id, user.name, user.password, user.group)
 
 	mycursor.execute(sql, values)
 	mydb.commit()
