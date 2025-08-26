@@ -19,9 +19,9 @@ def teste_user():
 	from database import communication_database as CDB
 	
 	for i in range(10):
-		name, password, tipos = user.genarate_info_user()
+		name, password, tipo = user.genarate_info_user()
 
-		u = user.User(name, password, tipos)
+		u = user.User(name, password, tipo)
 
 		CDB.add_user(u)
 		
@@ -94,11 +94,11 @@ def outhers():
 	user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT\
 	)"
 	'''
-	cmd_x = "DROP TABLE user;DROP TABLE usuario;CREATE TABLE user(id varchar(36),name varchar(16),password varchar(81),user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT)"
+	cmd_x = "DROP TABLE user;DROP TABLE usuario;CREATE TABLE user(id varchar(36),name varchar(16),password varchar(81),tipo varchar(16),user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT)"
 	
 	for i in range(10):
-		name, password, tipos = user.genarate_info_user()
-		u = user.User(name,password, tipos)
+		name, password, tipo = user.genarate_info_user()
+		u = user.User(name,password, tipo)
 		response = CDB.add_user(u, cmd_x)
 		cmd_x = None
 
