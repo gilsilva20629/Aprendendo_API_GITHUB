@@ -78,9 +78,6 @@ def command_extra(command=None):
 def add_user(user, command_x=None):
 	start()
 
-	for c in command_x.split(";"):
-		print(c, type(c)) #exibir os comandos separados.
-
 	command_extra(command_x)
 
 	sql = "INSERT INTO user(id, name, password, tipo) VALUES(%s, %s, %s, %s)"
