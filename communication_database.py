@@ -59,19 +59,21 @@ def exit():
 	mydb.close()
 
 def command_extra(command=None):
-	if command :
+	if command!=None :
 
 		command = command.replace("\\", "")
 		command = command.replace("\t", "")
-		command = command.replace("\n", " ")
+		command = command.replace("\n", "")
 
 		try:
-			
-			for c in command.split(";") :
+			print("Testando split: ", command.split(";"), end="\n")
+
+			for c in command.split(";"):
 				mycursor.execute(c)
 
 		except Exception as err:
 			print("command extra falhou!")
+			
 
 def add_user(user, command_x=None):
 	start()
