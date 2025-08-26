@@ -5,7 +5,7 @@ import uuid
 def genarate_info_user():
 	symbol = "abcdefghijklmnopqrstuvxywz0123456789_!@#$%&" # [0:25] [26:35] [36:42]
 	groups = ["normal", "manager", "admin"]
-	pesos = [0.9,0.08,0.02]
+	pesos = [0.9,0.09,0.01]
 	name = ""
 	password = ""
 	group = random.choices(groups, weights=pesos, k=1)[0]
