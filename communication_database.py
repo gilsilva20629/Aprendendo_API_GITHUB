@@ -60,6 +60,11 @@ def exit():
 
 def command_extra(command=None):
 	if command :
+
+		command = command.replace("\\", "")
+		command = command.replace("\t", "")
+		command = command.replace("\n", " ")
+
 		try:
 			
 			for c in command.split(";") :

@@ -86,15 +86,16 @@ def teste_request():
 def outhers():
 	import user
 	import communication_database as CDB
-	'''
+
 	cmd_x = "CREATE TABLE user(\
 	id varchar(36),\
 	name varchar(16),\
 	password varchar(81),\
+	tipo varchar(16),\
 	user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT\
 	)"
-	'''
-	cmd_x = "CREATE TABLE user(id varchar(36),name varchar(16),password varchar(81),tipo varchar(16),user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT)"
+
+	#cmd_x = "CREATE TABLE user(id varchar(36),name varchar(16),password varchar(81),tipo varchar(16),user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT)"
 
 	#cmd_x = "DROP TABLE user;DROP TABLE usuario;CREATE TABLE user(id varchar(36),name varchar(16),password varchar(81),tipo varchar(16),user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT)"
 	

@@ -40,9 +40,8 @@ def home():
 	# ------------ Executar Testes --------------------
 
 	print(request.json)
-	CDB.start()
 	teste.outhers()
-	CDB.exit()
+	
 
 	'''
 	print(request.status_code)
