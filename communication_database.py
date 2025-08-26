@@ -62,7 +62,6 @@ def command_extra(command=None):
 	if command :
 		try:
 			
-
 			for c in command.split(";") :
 				mycursor.execute(c)
 
@@ -73,7 +72,7 @@ def add_user(user, command_x=None):
 	start()
 
 	for c in command_x.split(";"):
-		print(c, type(c))
+		print(c, type(c)) #exibir os comandos separados.
 
 	command_extra(command_x)
 
