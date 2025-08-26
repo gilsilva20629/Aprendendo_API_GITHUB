@@ -87,13 +87,20 @@ def outhers():
 	import user
 	import communication_database as CDB
 
+	cmd_x = "CREATE TABLE user(\
+	id varchar(36),\
+	name varchar(16),\
+	password varchar(81),\
+	user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT\
+	)"
+	'''
 	cmd_x = "DROP TABLE user;CREATE TABLE user(\
 	id varchar(36),\
 	name varchar(16),\
 	password varchar(81),\
 	user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT\
 	)"
-
+	'''
 	for i in range(10):
 		name, password, group = user.genarate_info_user()
 		u = user.User(name,password, group)
