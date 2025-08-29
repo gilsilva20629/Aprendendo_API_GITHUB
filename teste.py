@@ -105,10 +105,10 @@ def outhers():
 	for i in range(10):
 		name, password, tipo = user.genarate_info_user()
 		u = user.User(name,password, tipo)
-		response = CDB.add_user(u, cmd_x)	# funcao com comando extra.
-		#response = CDB.add_user(u)
+		#response = CDB.add_user(u, cmd_x)	# funcao com comando extra.
+		response = CDB.add_user(u)
 
-		cmd_x = None
+		#cmd_x = None
 
 
 if __name__ == "__main__":

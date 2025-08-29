@@ -3,6 +3,13 @@ import os
 
 def start():
 
+	#obtendo variaveis locais
+	#HOST = os.getenv("HOST")
+	PWD = os.getenv("PWD")
+	#print("Ambiente: ", PWD)
+
+
+	#obtendo variaveis remotas railway.com
 	MYSQLHOST = os.getenv("MYSQLHOST")
 	MYSQLPORT = os.getenv("MYSQLPORT")
 	MYSQLUSER = os.getenv("MYSQLUSER")
@@ -13,16 +20,24 @@ def start():
 	global mydb, mycursor
 
 	try:
-		mydb = mysql.connector.connect(
-			host = os.getenv("MYSQLHOST"),
-			#host = "localhost",
-			port = os.getenv("MYSQLPORT"),
-			user = os.getenv("MYSQLUSER"),
-			#user = "root"
-			password = os.getenv("MYSQLPASSWORD"),
-			#password = "Nsg@2024"
-			database = os.getenv("MYSQLDATABASE")
+		
+		#if HOST != "127.0.0.1" and HOST != "localhost" :	--> não testeado.
+		if PWD != "/home/susan/Python/github_dir_local/Aprendendo_API_GITHUB":
+			mydb = mysql.connector.connect(
+				host = os.getenv("MYSQLHOST"),
+				port = os.getenv("MYSQLPORT"),
+				user = os.getenv("MYSQLUSER"),
+				password = os.getenv("MYSQLPASSWORD"),
+				database = os.getenv("MYSQLDATABASE")
 			)
+		else:
+			mydb = mysql.connector.connect(
+				host = "localhost",
+				user = "root",
+				password = "Nsg@2024",
+				database ="db_teste01"
+				)
+
 	except Exception as err:
 		print(err, type(err))
 		return "Erro: Não foi possivel conectar ao database!"
@@ -67,13 +82,14 @@ def command_extra(command=None):
 
 		try:
 			print("Testando split: ", command.split(";"), end="\n")
+			command = command.split(";")
+			print("Comandos limpos: ", command, end="\n")
 
-			for c in command.split(";"):
+			for c in command:
 				mycursor.execute(c)
 
 		except Exception as err:
-			print("command extra falhou!")
-			
+			print("command extra falhou!")	
 
 def add_user(user, command_x=None):
 	start()
