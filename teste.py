@@ -86,26 +86,29 @@ def teste_request():
 def outhers():
 	import user
 	import communication_database as CDB
-	'''
-	cmd_x = "CREATE TABLE user(\
+
+	cmdDrop = "DROP TABLE user;"
+
+	cmdCreate = "CREATE TABLE user(\
 	id varchar(36),\
 	name varchar(16),\
 	password varchar(81),\
 	tipo varchar(16),\
 	user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT\
 	)"
-	'''
-	#cmd_x = "CREATE TABLE user(id varchar(36),name varchar(16),password varchar(81),tipo varchar(16),user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT)"
 
-	#cmd_x = "DROP TABLE user;DROP TABLE usuario;CREATE TABLE user(id varchar(36),name varchar(16),password varchar(81),tipo varchar(16),user_id int NOT NULL PRIMARY KEY AUTO_INCREMENT)"
-	
+
+	#cmd_x = cmdDrop + cmdCreate
+	cmd_x = cmdCreate
+
+
 	for i in range(10):
 		name, password, tipo = user.genarate_info_user()
 		u = user.User(name,password, tipo)
-		#response = CDB.add_user(u, cmd_x)
-		response = CDB.add_user(u)
+		response = CDB.add_user(u, cmd_x)	# funcao com comando extra.
+		#response = CDB.add_user(u)
 
-		#cmd_x = None
+		cmd_x = None
 
 
 if __name__ == "__main__":
