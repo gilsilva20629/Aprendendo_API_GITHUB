@@ -14,7 +14,7 @@ que permitem que os servidores descrevam um conjunto de origens que possuem perm
 '''
 
 
-@app.route('/my_endpoint', methods=['GET'])
+@app.route('/my_endpoint', methods=['GET', 'POST'])
 def home():
 
 	# ------------ Recepcao do request----------------
