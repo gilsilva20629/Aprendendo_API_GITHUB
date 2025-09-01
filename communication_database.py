@@ -107,11 +107,9 @@ def add_user(user, command_x=None):
 	print(mycursor.rowcount, "Record Inserted.")
 	exit()
 
-'''
-###########################################
-def search_user(name=None, user_id=None, tipo=None, command_extra=None):
+def search_user(name=None, user_id=None, tipo=None, command_x=None):
 	start()
-	command_extra(command_extra)
+	command_extra(command_x)
 
 	n = []
 	u = []
@@ -158,25 +156,25 @@ def search_user(name=None, user_id=None, tipo=None, command_extra=None):
 
 
 		
-def list_users(command_extra=None):
+def list_users(command_x=None):
 	start()
-	command_extra(command_extra)
+	command_extra(command_x)
 	mycursor.execute("SELECT user_id, name, `tipo` FROM user")
 	results = mycursor.fetchall()
 	exit()
 	return results
 
-def remove(u_id, command_extra=None):
+def remove(u_id, command_x=None):
 	start()
-	command_extra(command_extra)
+	command_extra(command_x)
 	mycursor.execute(f"DELETE FROM user WHERE user_id={u_id}")
 	mydb.commit()
 	print(mycursor.rowcount, "Record(s) Deleted.")
 	exit()
 
-def login(name, password, command_extra=None):
+def login(name, password, command_x=None):
 	start()
-	command_extra(command_extra)
+	command_extra(command_x)
 	flag = True
 	results = search_user(name)[0]
 
@@ -190,4 +188,3 @@ def login(name, password, command_extra=None):
 				exit()
 				return flag
 		
-'''

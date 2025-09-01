@@ -14,7 +14,7 @@ que permitem que os servidores descrevam um conjunto de origens que possuem perm
 '''
 
 
-@app.route('/my_endpoint', methods=['POST'])
+@app.route('/my_endpoint', methods=['GET'])
 def home():
 
 	# ------------ Recepcao do request----------------
@@ -39,6 +39,7 @@ def home():
 
 	# ------------ Executar Testes --------------------
 
+	print(request.items())
 	print(request.json)
 	teste.outhers()
 	
@@ -79,5 +80,5 @@ def home():
 	
 
 if __name__ == '__main__':
-    #app.run(host="0.0.0.0", port=5000 , debug=True)  #
-	app.run(host="127.0.0.1", port=5000 , debug=True)  #
+    app.run(host="0.0.0.0", port=5000 , debug=True)  #
+	#app.run(host="127.0.0.1", port=5000 , debug=True)  #
