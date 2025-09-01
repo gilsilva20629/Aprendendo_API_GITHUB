@@ -39,13 +39,13 @@ def home():
 
 	# ------------ Executar Testes --------------------
 
-	print(request.items())
 	print(request.json)
 	teste.outhers()
 	
 
 	'''
-	print(request.status_code)
+	print(request.method)
+	print(request.status_code) 
 	print(request.url)
 	print(request.encoding)
 	print(request.form)
@@ -55,6 +55,11 @@ def home():
 	print(request.content)
 	print(request.json)
 	print(request.text)
+	print(request.auth)
+	print(request.cookies)
+	print(request.timeuot)
+	print(request.params)
+	print(request.body)
 	'''
 
 	# ------------ Executar operacoes --------------------
