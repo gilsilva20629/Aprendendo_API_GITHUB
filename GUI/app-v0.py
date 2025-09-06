@@ -85,8 +85,8 @@ class WindowLogin:
 		response = requests.post("http://127.0.0.1:5000/my_endpoint", data={"name_user":str(name_user), "password":str(password), "extra":"1"})
 		print("---->  Status code:", response.status_code)
 
-		if response.text == "True" :
-			self.rep.set("OK")
+		if response.text == "OK" :
+			self.rep.set("login bem sucedido!")
 		else:
 			self.rep.set("Credenciais Invalidas!")
 
@@ -97,8 +97,8 @@ class WindowLogin:
 		response = requests.post("http://127.0.0.1:5000/my_endpoint", data={"name_user":str(name_user), "password":str(password), "extra":"1"})
 		print("---->  Status code:", response.status_code)
 		
-		if response.text == "True" :
-			self.rep.set("OK")
+		if response.text == "OK" :
+			self.rep.set("login bem sucedido!")
 		else:
 			self.rep.set("Credenciais Invalidas!")
 	
@@ -165,7 +165,7 @@ class WindowCad:
 		response = requests.post("http://127.0.0.1:5000/my_endpoint", data={"name_user":str(name_user), "password":str(password), "extra":"2"})
 		print("---->  Status code:", response.status_code)
 
-		if response.text == "True" :
+		if response.text == "OK" :
 			self.rep.set("Cad OK")
 		else:
 			self.rep.set("Cad fail!")
@@ -177,15 +177,12 @@ class WindowCad:
 		response = requests.post("http://127.0.0.1:5000/my_endpoint", data={"name_user":str(name_user), "password":str(password), "extra":"2"})
 		print("---->  Status code:", response.status_code)
 		
-		if response.text == "True" :
+		if response.text == "OK" :
 			self.rep.set("Cad OK")
 		else:
 			self.rep.set("Cad fail!")
 
 if __name__ == "__main__" :
 
-	janela_cadastro = WindowCad()
-	janela_cadastro.show()
-
-	#janela_login = WindowLogin()
-	#janela_login.show()
+	janela_login = WindowLogin()
+	janela_login.show()

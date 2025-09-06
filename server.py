@@ -39,11 +39,11 @@ def home():
 
 	# ------------ Executar Testes --------------------
 
-	print(request.json)
-	teste.outhers()
+	#print(request.json)
+	#teste.outhers()
 	
 
-	'''
+	''' 
 	print(request.method)
 	print(request.status_code) 
 	print(request.url)
@@ -63,9 +63,13 @@ def home():
 	'''
 
 	# ------------ Executar operacoes --------------------
-	
+	'''
 	if op_type == "1" :	#login
-		resposta = "OK"
+		r = CDB.login()
+		if r :
+			resposta = "OK"
+		else:
+			resposta = "NOK"
 	elif op_type == "2" :
 		pass
 	elif op_type == "3" :
@@ -78,7 +82,35 @@ def home():
 		pass
 	else:
 		pass
+	'''
+	
+	match op_type:
 
+		case "1": #login
+			r = CDB.login(name, password)
+			if r :
+				resposta = "OK"
+			else:
+				resposta = "NOK"
+
+		case "2":
+			pass
+
+		case "3":
+			pass
+
+		case "4":
+			pass
+
+		case "5":
+			pass
+
+		case "6":
+			pass
+
+		case "_":
+			pass
+	
 	
 	# ------------ Resposta --------------------------
 	return resposta

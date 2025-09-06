@@ -1,5 +1,6 @@
 import mysql.connector
 import os
+import hashlib
 
 def start():
 
@@ -119,6 +120,9 @@ def search_user(name=None, user_id=None, tipo=None, command_x=None):
 		return "Ivalid parameters!"
 
 	else:
+		#mycursor.execute(f"SELECT * FROM user WHERE name={name}")
+		#results = mycursor.fetchall()
+
 		mycursor.execute("SELECT * FROM user")
 		results = mycursor.fetchall()
 
@@ -150,16 +154,16 @@ def search_user(name=None, user_id=None, tipo=None, command_x=None):
 			for i in results:
 				if tipo == i[3] :
 					#print(i)
-					g.append(i)	
+					g.append(i)
+		
 	exit()
-	return n, u, g	
-
-
+	return n, u, g
+	
 		
 def list_users(command_x=None):
 	start()
 	command_extra(command_x)
-	mycursor.execute("SELECT user_id, name, `tipo` FROM user")
+	mycursor.execute("SELECT user_id, name, tipo FROM user")
 	results = mycursor.fetchall()
 	exit()
 	return results
@@ -175,16 +179,21 @@ def remove(u_id, command_x=None):
 def login(name, password, command_x=None):
 	start()
 	command_extra(command_x)
-	flag = True
+
 	results = search_user(name)[0]
 
 	for r in results:
 		if name in r:
+
+			#gerar hash do password
+			#h = hashlib.sha256()
+			#h.update(password.encoded())
+			#h.hexdigest()
+
 			if password == (r[2])[0:16] :
 				exit()
-				return flag
+				return True
 			else:
-				flag = False
 				exit()
-				return flag
+				return False
 		
