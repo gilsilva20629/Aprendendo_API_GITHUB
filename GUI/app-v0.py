@@ -20,6 +20,52 @@ def window_manager(operacao):
 		janela_login = WindowLogin()
 		janela_login.show()
 
+class Window:
+	def __init__(self, name:str)-> None:
+		self.window = tk.Tk()
+		self.window.title(name)
+
+		frame_menu = tk.Frame(master=self.window, background="blue", relief=tk.RAISED, borderwidth=1, width=240, height=40)
+		frame_middle = tk.Frame(master=self.window, background="white", relief=tk.RAISED, borderwidth=1, width=1280, height=500)
+		frame_middle_left = tk.Frame(master=frame_middle, background="gray", relief=tk.RAISED, borderwidth=1, width=320, height=500)
+		frame_middle_center = tk.Frame(master=frame_middle, background="green", relief=tk.RAISED, borderwidth=1, width=640, height=500)
+		frame_middle_right = tk.Frame(master=frame_middle, background="yellow", relief=tk.RAISED, borderwidth=1, width=320, height=500)
+		frame_botton = tk.Frame(master=self.window, background="red", relief=tk.RAISED, borderwidth=1, width=240, height=80)
+		frame_log = tk.Frame(master=self.window, background="black", relief=tk.RAISED, borderwidth=1, width=240, height=40)
+
+		
+		#image = PhotoImage(file='myimage.gif')
+		#label['image'] = image
+
+		frame_menu.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_middle.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_middle_left.pack(side="left", fill="x",expand=True, anchor="w", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_middle_center.pack(side="left", fill="x",expand=True, anchor="center", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_middle_right.pack(side="left", fill="x", expand=True, anchor="w", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_botton.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_log.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
+
+		for j in range(5):
+			frame = tk.Frame(master=frame_menu, relief=tk.RAISED, borderwidth=1)
+			frame.grid(row=0, column=j, ipadx=1, ipady=1, padx=1, pady=1)	#-column, -columnspan, -in, -ipadx, -ipady, -padx, -pady, -row, -rowspan, or -sticky
+			label = tk.Label(master=frame, text=f"img{j}")
+			label.pack(fill="x")
+
+	def start(self):
+		self.window.mainloop()
+
+	def show(self):
+		self.window.mainloop()
+
+	def quit(self):
+		self.window.destroy()
+
+	def exit(self):
+		self.window.destroy()
+
+	def teste(self):
+		raise NotImplementedError("Este método deve ser implementado pelas subclasses.")
+
 
 class WindowLogin:
 
@@ -39,7 +85,7 @@ class WindowLogin:
 
 		for j in range(5):
 			frame = tk.Frame(master=frame_menu, relief=tk.RAISED, borderwidth=1)
-			frame.grid(row=0, column=j)
+			frame.grid(expand=True, row=0, column=j)
 			btn = tk.Button(master=frame, text="btn")
 			btn.pack(fill="x")		
 
@@ -184,5 +230,8 @@ class WindowCad:
 
 if __name__ == "__main__" :
 
-	janela_login = WindowLogin()
-	janela_login.show()
+	#janela_login = WindowLogin()
+	#janela_login.show()
+
+	janela_principal = Window("inicio")
+	janela_principal.show()
