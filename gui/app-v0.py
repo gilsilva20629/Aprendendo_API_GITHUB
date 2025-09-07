@@ -26,16 +26,12 @@ class Window:
 		self.window.title(name)
 
 		frame_menu = tk.Frame(master=self.window, background="blue", relief=tk.RAISED, borderwidth=1, width=240, height=40)
-		frame_middle = tk.Frame(master=self.window, background="white", relief=tk.RAISED, borderwidth=1, width=1280, height=500)
-		frame_middle_left = tk.Frame(master=frame_middle, background="gray", relief=tk.RAISED, borderwidth=1, width=320, height=500)
-		frame_middle_center = tk.Frame(master=frame_middle, background="green", relief=tk.RAISED, borderwidth=1, width=640, height=500)
-		frame_middle_right = tk.Frame(master=frame_middle, background="yellow", relief=tk.RAISED, borderwidth=1, width=320, height=500)
+		frame_middle = tk.Frame(master=self.window, background="white", relief=tk.RAISED, borderwidth=1, width=640, height=450)
+		frame_middle_left = tk.Frame(master=frame_middle, background="gray", relief=tk.RAISED, borderwidth=1, width=160, height=450)
+		frame_middle_center = tk.Frame(master=frame_middle, background="green", relief=tk.RAISED, borderwidth=1, width=320, height=450)
+		frame_middle_right = tk.Frame(master=frame_middle, background="yellow", relief=tk.RAISED, borderwidth=1, width=160, height=450)
 		frame_botton = tk.Frame(master=self.window, background="red", relief=tk.RAISED, borderwidth=1, width=240, height=80)
 		frame_log = tk.Frame(master=self.window, background="black", relief=tk.RAISED, borderwidth=1, width=240, height=40)
-
-		
-		#image = PhotoImage(file='myimage.gif')
-		#label['image'] = image
 
 		frame_menu.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
 		frame_middle.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
@@ -45,10 +41,15 @@ class Window:
 		frame_botton.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
 		frame_log.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
 
+		images = ["images/shop.png", "images/stock.png", "images/finance.png", "images/car.png", "images/gear.png"]
+		#image = tk.PhotoImage(file='myimage.gif')
+		#label['image'] = image
+
 		for j in range(5):
 			frame = tk.Frame(master=frame_menu, relief=tk.RAISED, borderwidth=1)
 			frame.grid(row=0, column=j, ipadx=1, ipady=1, padx=1, pady=1)	#-column, -columnspan, -in, -ipadx, -ipady, -padx, -pady, -row, -rowspan, or -sticky
 			label = tk.Label(master=frame, text=f"img{j}")
+			label["image"] = tk.PhotoImage(file=images[j], width=50, height=50)
 			label.pack(fill="x")
 
 	def start(self):
