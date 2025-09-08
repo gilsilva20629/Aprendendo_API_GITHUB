@@ -24,33 +24,72 @@ class Window:
 	def __init__(self, name:str)-> None:
 		self.window = tk.Tk()
 		self.window.title(name)
+		text_log = tk.StringVar()
+		text_log.set("report log")
 
-		frame_menu = tk.Frame(master=self.window, background="blue", relief=tk.RAISED, borderwidth=1, width=240, height=40)
+		frame_menu = tk.Frame(master=self.window, background="white", relief=tk.RAISED, borderwidth=1, width=240, height=40)
 		frame_middle = tk.Frame(master=self.window, background="white", relief=tk.RAISED, borderwidth=1, width=640, height=450)
-		frame_middle_left = tk.Frame(master=frame_middle, background="gray", relief=tk.RAISED, borderwidth=1, width=160, height=450)
-		frame_middle_center = tk.Frame(master=frame_middle, background="green", relief=tk.RAISED, borderwidth=1, width=320, height=450)
-		frame_middle_right = tk.Frame(master=frame_middle, background="yellow", relief=tk.RAISED, borderwidth=1, width=160, height=450)
-		frame_botton = tk.Frame(master=self.window, background="red", relief=tk.RAISED, borderwidth=1, width=240, height=80)
-		frame_log = tk.Frame(master=self.window, background="black", relief=tk.RAISED, borderwidth=1, width=240, height=40)
+		frame_middle_left = tk.Frame(master=frame_middle, background="gray80", relief=tk.RAISED, borderwidth=1, width=160, height=450)
+		frame_middle_center = tk.Frame(master=frame_middle, background="gray80", relief=tk.RAISED, borderwidth=1, width=320, height=450)
+		frame_middle_right = tk.Frame(master=frame_middle, background="gray80", relief=tk.RAISED, borderwidth=1, width=160, height=450)
+		frame_botton = tk.Frame(master=self.window, relief=tk.RAISED, borderwidth=1, width=240, height=80)
+		frame_log = tk.LabelFrame(master=self.window, relief=tk.RAISED, borderwidth=1, width=240, height=40, text="Log")
+		lbl_log = tk.Label(master=frame_log, textvariable=text_log, borderwidth=1)
 
-		frame_menu.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
-		frame_middle.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
-		frame_middle_left.pack(side="left", fill="x",expand=True, anchor="w", padx=2, pady=4, ipadx=1, ipady=1)
-		frame_middle_center.pack(side="left", fill="x",expand=True, anchor="center", padx=2, pady=4, ipadx=1, ipady=1)
-		frame_middle_right.pack(side="left", fill="x", expand=True, anchor="w", padx=2, pady=4, ipadx=1, ipady=1)
-		frame_botton.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
-		frame_log.pack(fill="x", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_menu.pack(expand=True, fill="both", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_middle.pack(expand=True, fill="both", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_middle_left.pack(expand=True, fill="both", side="left", anchor="w", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_middle_center.pack(expand=True, fill="both", side="left", anchor="center", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_middle_right.pack(expand=True, fill="both", side="left", anchor="e", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_botton.pack(expand=True, fill="both", padx=2, pady=4, ipadx=1, ipady=1)
+		frame_log.pack(expand=True, fill="both", padx=2, pady=4, ipadx=1, ipady=1)
+		lbl_log.pack()
+		
+		######## Lidando com grid de botoes ##############
 
-		images = ["images/shop.png", "images/stock.png", "images/finance.png", "images/car.png", "images/gear.png"]
-		#image = tk.PhotoImage(file='myimage.gif')
-		#label['image'] = image
+		text_label_frame = ["shop", "stock", "car", "finance", "gear"]
+		images = ["images/shop.png", "images/stock.png", "images/car.png", "images/finance.png", "images/gear.png"]
+		img_ref_list = []
+		btn_ref_list = []
+		window_list = ["shop", "stock", "car", "finance", "gear"]
+		current_window = window_list[0]
 
 		for j in range(5):
-			frame = tk.Frame(master=frame_menu, relief=tk.RAISED, borderwidth=1)
-			frame.grid(row=0, column=j, ipadx=1, ipady=1, padx=1, pady=1)	#-column, -columnspan, -in, -ipadx, -ipady, -padx, -pady, -row, -rowspan, or -sticky
-			label = tk.Label(master=frame, text=f"img{j}")
-			label["image"] = tk.PhotoImage(file=images[j], width=50, height=50)
-			label.pack(fill="x")
+			frame = tk.LabelFrame(master=frame_menu, text=text_label_frame[j])
+			frame.grid(row=0, column=j, ipadx=2, ipady=2, padx=2, pady=2, sticky="nsew")	#-column, -columnspan, -in, -ipadx, -ipady, -padx, -pady, -row, -rowspan, or -sticky
+			btn = tk.Button(master=frame, command=lambda : identifier_button(btn))
+
+			foto = tk.PhotoImage(master=label, file=images[j], width=35, height=35) 
+			btn["image"] = foto
+
+			#gpt confesso que nao entedi as duas linhas abaixo para prevenir garbage collector
+			btn.image = foto	# Armazena a referência à imagem
+			img_ref_list.append(foto)
+			btn_ref_list.append(btn)	# Adiciona à lista para manter a referência
+
+			btn.pack(fill="x", padx=2, pady=2, ipadx=2, ipady=2)
+
+		for j in range(5):
+			frame_menu.grid_columnconfigure(j, weight=1)  # Ajuste o peso das colunas ao expandir
+
+		######## Fim de grid de botoes ##############
+
+
+	def identifier_button(selfn, btn: tk.Button)-> None:
+
+		match btn:
+			case btn_ref_list[0]:
+				print("BOTÃO SHOP")
+			case btn_ref_list[1]:
+				print("BOTÃO STOCK")
+			case btn_ref_list[2]:
+				print("BOTÃO CAR")
+			case btn_ref_list[3]:
+				print("BOTÃO FINANCE")
+			case btn_ref_list[4]:
+				print("BOTÃO GEAR")
+			case "_":
+				pass
 
 	def start(self):
 		self.window.mainloop()
@@ -65,7 +104,7 @@ class Window:
 		self.window.destroy()
 
 	def teste(self):
-		raise NotImplementedError("Este método deve ser implementado pelas subclasses.")
+		raise NotImplementedError("Este método deve ser implementado pelas filhas/subclasses.")
 
 
 class WindowLogin:

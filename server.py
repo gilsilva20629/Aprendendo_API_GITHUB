@@ -91,7 +91,6 @@ def home():
 			if r :
 				resposta = "OK"
 			else:
-				resposta = "NOK"
 
 		case "2":
 			pass
@@ -109,7 +108,9 @@ def home():
 			pass
 
 		case "_":
-			pass
+				resposta = "NOK"
+
+	
 	
 	
 	# ------------ Resposta --------------------------
