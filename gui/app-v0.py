@@ -1,5 +1,6 @@
 import tkinter as tk
 import requests
+import time
 
 '''
 Convenções de nomenclatura
@@ -11,21 +12,85 @@ Entry			ent							ent_age
 Text			txt							txt_notes
 Frame			frm							frm_address
 '''
+#global current_window
+current_window = []
 
-def window_manager(operacao):
-	if operacao == "cadastro":
-		janela_cadastro = WindowCad()
-		janela_cadastro.show()
-	elif operacao == "login":
-		janela_login = WindowLogin()
-		janela_login.show()
+
+def window_manager(janela: str)-> tk.Tk | None :
+	
+	match janela:
+
+		case "cadastro":
+			current_window.append(WindowCad("cadastro"))
+			current_window[1].show()
+			current_window[0].quit()
+			return current_window[0]
+
+		case "shop":
+			current_window.append(WindowShop("shop"))
+			print(current_window)
+			current_window[1].show()
+			current_window[0].quit()
+			current_window.pop(0)
+			print(current_window)
+			return current_window[0]
+
+		case "stock":
+			current_window.append(WindowStock("stock"))
+			current_window[1].show()
+			current_window[0].quit()
+			return current_window[0]	
+		case "car":
+			current_window.append(WindowCar("car"))
+			current_window[1].show()
+			current_window[0].quit()
+			return current_window[0]
+		case "finance":
+			current_window.append(WindowFinance("finance"))
+			current_window[1].show()
+			current_window[0].quit()
+			return current_window[0]
+		case "gear":
+			current_window.append(WindowGear("gear"))
+			print(current_window)
+			current_window[1].show()
+			current_window[0].quit()
+			current_window.pop(0)
+			print(current_window)
+
+			return current_window[0]
+		case "-":
+			Print("Nenhuma janela encontrada.")
+			return None
+
+		
+		#case "login":
+		#	current_window.append(WindowLogin("login"))
+		#	current_window[1].show()print("Funcao-> identifier_widget: ", end="\n")
+		#	current_window[0].quit()
+		#	return current_window[0]
+
+def identifier_widget(self, event)-> None:
+	print("Funcao-> identifier_widget: ", end="\n")
+	print("identifier", event.widget.winfo_id(), end="\n")
+	print(event.widget['text'], end="\n")
+
+	window_manager( event.widget['text'] )		
+
 
 class Window:
 	def __init__(self, name:str)-> None:
 		self.window = tk.Tk()
 		self.window.title(name)
-		text_log = tk.StringVar()
-		text_log.set("report log")
+		self.text_log = tk.StringVar()
+		self.text_log.set("report log")
+		#text_label_frame = ["shop", "stock", "car", "finance", "gear"]
+		images = ["images/shop.png", "images/stock.png", "images/car.png", "images/finance.png", "images/gear.png"]
+		img_ref_list = []
+		btn_ref_list = {}
+		window_list = ["shop", "stock", "car", "finance", "gear", "login", "cadastro"]
+		
+
 
 		frame_menu = tk.Frame(master=self.window, background="white", relief=tk.RAISED, borderwidth=1, width=240, height=40)
 		frame_middle = tk.Frame(master=self.window, background="white", relief=tk.RAISED, borderwidth=1, width=640, height=450)
@@ -34,7 +99,7 @@ class Window:
 		frame_middle_right = tk.Frame(master=frame_middle, background="gray80", relief=tk.RAISED, borderwidth=1, width=160, height=450)
 		frame_botton = tk.Frame(master=self.window, relief=tk.RAISED, borderwidth=1, width=240, height=80)
 		frame_log = tk.LabelFrame(master=self.window, relief=tk.RAISED, borderwidth=1, width=240, height=40, text="Log")
-		lbl_log = tk.Label(master=frame_log, textvariable=text_log, borderwidth=1)
+		lbl_log = tk.Label(master=frame_log, textvariable=self.text_log, borderwidth=1)
 
 		frame_menu.pack(expand=True, fill="both", padx=2, pady=4, ipadx=1, ipady=1)
 		frame_middle.pack(expand=True, fill="both", padx=2, pady=4, ipadx=1, ipady=1)
@@ -44,52 +109,39 @@ class Window:
 		frame_botton.pack(expand=True, fill="both", padx=2, pady=4, ipadx=1, ipady=1)
 		frame_log.pack(expand=True, fill="both", padx=2, pady=4, ipadx=1, ipady=1)
 		lbl_log.pack()
-		
+
 		######## Lidando com grid de botoes ##############
 
-		text_label_frame = ["shop", "stock", "car", "finance", "gear"]
-		images = ["images/shop.png", "images/stock.png", "images/car.png", "images/finance.png", "images/gear.png"]
-		img_ref_list = []
-		btn_ref_list = []
-		window_list = ["shop", "stock", "car", "finance", "gear"]
-		current_window = window_list[0]
-
+		
 		for j in range(5):
-			frame = tk.LabelFrame(master=frame_menu, text=text_label_frame[j])
+			frame = tk.Frame(master=frame_menu)
 			frame.grid(row=0, column=j, ipadx=2, ipady=2, padx=2, pady=2, sticky="nsew")	#-column, -columnspan, -in, -ipadx, -ipady, -padx, -pady, -row, -rowspan, or -sticky
-			btn = tk.Button(master=frame, command=lambda : identifier_button(btn))
+			
 
-			foto = tk.PhotoImage(master=label, file=images[j], width=35, height=35) 
+
+			btn = tk.Button(master=frame, text=window_list[j], compound="top", command=lambda : window_manager( btn['text'] )) # Parou aqui.
+			#btn.bind("<Button-1>", identifier_widget) # "<Button-1>" corresponde ao botão esquerdo do mouse
+
+
+
+
+			btn_ref_list.update({str(id(btn)): btn})	# Adiciona ao dicionario para manter a referência
+
+			foto = tk.PhotoImage(master=btn, file=images[j], width=35, height=35) 
 			btn["image"] = foto
-
 			#gpt confesso que nao entedi as duas linhas abaixo para prevenir garbage collector
 			btn.image = foto	# Armazena a referência à imagem
 			img_ref_list.append(foto)
-			btn_ref_list.append(btn)	# Adiciona à lista para manter a referência
 
 			btn.pack(fill="x", padx=2, pady=2, ipadx=2, ipady=2)
+
+			#print(btn_ref_list.keys(), end="\n")
+			#print(id(btn), id(btn_ref_list[j]), end="\n")  #teste
 
 		for j in range(5):
 			frame_menu.grid_columnconfigure(j, weight=1)  # Ajuste o peso das colunas ao expandir
 
 		######## Fim de grid de botoes ##############
-
-
-	def identifier_button(selfn, btn: tk.Button)-> None:
-
-		match btn:
-			case btn_ref_list[0]:
-				print("BOTÃO SHOP")
-			case btn_ref_list[1]:
-				print("BOTÃO STOCK")
-			case btn_ref_list[2]:
-				print("BOTÃO CAR")
-			case btn_ref_list[3]:
-				print("BOTÃO FINANCE")
-			case btn_ref_list[4]:
-				print("BOTÃO GEAR")
-			case "_":
-				pass
 
 	def start(self):
 		self.window.mainloop()
@@ -98,6 +150,7 @@ class Window:
 		self.window.mainloop()
 
 	def quit(self):
+		print("Saindo... ... ...")
 		self.window.destroy()
 
 	def exit(self):
@@ -109,9 +162,9 @@ class Window:
 
 class WindowLogin:
 
-	def __init__(self):
+	def __init__(self, name:str)-> None:
 		self.window = tk.Tk()
-		self.window.title("Login")
+		self.window.title(name)
 
 		frame_menu = tk.Frame(master=self.window, relief=tk.RAISED, borderwidth=1, width=80, height=40)
 		frame_middle = tk.Frame(master=self.window, relief=tk.RAISED, borderwidth=1)
@@ -125,7 +178,7 @@ class WindowLogin:
 
 		for j in range(5):
 			frame = tk.Frame(master=frame_menu, relief=tk.RAISED, borderwidth=1)
-			frame.grid(expand=True, row=0, column=j)
+			frame.grid(row=0, column=j)
 			btn = tk.Button(master=frame, text="btn")
 			btn.pack(fill="x")		
 
@@ -159,6 +212,7 @@ class WindowLogin:
 		self.window.mainloop()
 
 	def quit(self):
+		print("Saindo... ... ...")
 		self.window.destroy()
 
 	def exit(self):
@@ -173,6 +227,9 @@ class WindowLogin:
 
 		if response.text == "OK" :
 			self.rep.set("login bem sucedido!")
+			time.sleep(1)
+			window_manager("shop")
+
 		else:
 			self.rep.set("Credenciais Invalidas!")
 
@@ -185,14 +242,17 @@ class WindowLogin:
 		
 		if response.text == "OK" :
 			self.rep.set("login bem sucedido!")
+			time.sleep(1)
+			window_manager("shop")
+
 		else:
 			self.rep.set("Credenciais Invalidas!")
 	
 class WindowCad:
 
-	def __init__(self):
+	def __init__(self, name:str)-> None:
 		self.window = tk.Tk()
-		self.window.title("Cadastro")
+		self.window.title(name)
 
 		frame_menu = tk.Frame(master=self.window, relief=tk.RAISED, borderwidth=1, width=80, height=40)
 		frame_middle = tk.Frame(master=self.window, relief=tk.RAISED, borderwidth=1)
@@ -268,10 +328,36 @@ class WindowCad:
 		else:
 			self.rep.set("Cad fail!")
 
+#["shop", "stock", "car", "finance", "gear", "login", "cadastro"]
+
+class WindowShop(Window):
+	def teste(self):
+		print("Herança funciona bem.")
+
+class WindowStock(Window):
+	def teste(self):
+		print("Herança funciona bem.")
+
+class WindowCar(Window):
+	def teste(self):
+		print("Herança funciona bem.")
+
+class WindowFinance(Window):
+	def teste(self):
+		print("Herança funciona bem.")
+
+class WindowGear(Window):
+	def teste(self):
+		print("Herança funciona bem.")
+
+
 if __name__ == "__main__" :
 
-	#janela_login = WindowLogin()
-	#janela_login.show()
+	current_window.append(WindowLogin("login"))
+	print(current_window, end="\n")
+	#print(type(current_window[0]), end="\n")
+	current_window[0].show()
+	
 
-	janela_principal = Window("inicio")
-	janela_principal.show()
+
+	

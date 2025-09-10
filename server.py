@@ -90,7 +90,6 @@ def home():
 			r = CDB.login(name, password)
 			if r :
 				resposta = "OK"
-			else:
 
 		case "2":
 			pass
