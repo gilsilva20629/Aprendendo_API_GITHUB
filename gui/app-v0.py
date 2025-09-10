@@ -118,9 +118,10 @@ class Window:
 			frame.grid(row=0, column=j, ipadx=2, ipady=2, padx=2, pady=2, sticky="nsew")	#-column, -columnspan, -in, -ipadx, -ipady, -padx, -pady, -row, -rowspan, or -sticky
 			
 
-
+###########################################################################################################################################
 			btn = tk.Button(master=frame, text=window_list[j], compound="top", command=lambda : window_manager( btn['text'] )) # Parou aqui.
 			#btn.bind("<Button-1>", identifier_widget) # "<Button-1>" corresponde ao botão esquerdo do mouse
+###########################################################################################################################################
 
 
 
