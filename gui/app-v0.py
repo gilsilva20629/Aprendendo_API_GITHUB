@@ -1,6 +1,10 @@
 import tkinter as tk
 import requests
 import time
+from functools import partial 
+# A função partial é uma ferramenta que permite criar uma nova função a partir de uma função existente,
+# fixando (ou "prendendo") alguns dos argumentos dessa função.
+
 
 '''
 Convenções de nomenclatura
@@ -12,7 +16,7 @@ Entry			ent							ent_age
 Text			txt							txt_notes
 Frame			frm							frm_address
 '''
-#global current_window
+
 current_window = []
 
 
@@ -24,59 +28,65 @@ def window_manager(janela: str)-> tk.Tk | None :
 			current_window.append(WindowCad("cadastro"))
 			current_window[1].show()
 			current_window[0].quit()
-			return current_window[0]
 
-		case "shop":
+		case "shop" | 0 :
 			current_window.append(WindowShop("shop"))
 			print(current_window)
-			current_window[1].show()
 			current_window[0].quit()
 			current_window.pop(0)
+			current_window[0].show()
 			print(current_window)
-			return current_window[0]
 
-		case "stock":
+		case "stock" | 1 :
 			current_window.append(WindowStock("stock"))
-			current_window[1].show()
+			print(current_window)
 			current_window[0].quit()
-			return current_window[0]	
-		case "car":
+			current_window.pop(0)
+			current_window[0].show()
+			print(current_window)
+
+		case "car" | 2 :
 			current_window.append(WindowCar("car"))
-			current_window[1].show()
+			print(current_window)
 			current_window[0].quit()
-			return current_window[0]
-		case "finance":
+			current_window.pop(0)
+			current_window[0].show()
+			print(current_window)
+
+		case "finance" | 3 :
 			current_window.append(WindowFinance("finance"))
-			current_window[1].show()
+			print(current_window)
 			current_window[0].quit()
-			return current_window[0]
-		case "gear":
+			current_window.pop(0)
+			current_window[0].show()
+			print(current_window)
+
+		case "gear" | 4 :
 			current_window.append(WindowGear("gear"))
 			print(current_window)
-			current_window[1].show()
 			current_window[0].quit()
 			current_window.pop(0)
+			current_window[0].show()
 			print(current_window)
 
-			return current_window[0]
 		case "-":
 			Print("Nenhuma janela encontrada.")
-			return None
-
 		
+
 		#case "login":
 		#	current_window.append(WindowLogin("login"))
 		#	current_window[1].show()print("Funcao-> identifier_widget: ", end="\n")
 		#	current_window[0].quit()
-		#	return current_window[0]
+		#	return current_window[0]	
 
-def identifier_widget(self, event)-> None:
+'''
+def identifier_widget(self, event)-> str:
 	print("Funcao-> identifier_widget: ", end="\n")
 	print("identifier", event.widget.winfo_id(), end="\n")
 	print(event.widget['text'], end="\n")
 
-	window_manager( event.widget['text'] )		
-
+	window_mananger(event.widget['text'])
+'''
 
 class Window:
 	def __init__(self, name:str)-> None:
@@ -117,16 +127,14 @@ class Window:
 			frame = tk.Frame(master=frame_menu)
 			frame.grid(row=0, column=j, ipadx=2, ipady=2, padx=2, pady=2, sticky="nsew")	#-column, -columnspan, -in, -ipadx, -ipady, -padx, -pady, -row, -rowspan, or -sticky
 			
-
-###########################################################################################################################################
-			btn = tk.Button(master=frame, text=window_list[j], compound="top", command=lambda : window_manager( btn['text'] )) # Parou aqui.
+			btn = tk.Button(master=frame, text=window_list[j], compound="top")
+			btn['command'] = partial(window_manager, btn['text'])
+			#btn = tk.Button(master=frame, text=window_list[j], compound="top", command=lambda : window_manager( btn['text'] ))	
+			#btn = tk.Button(master=frame, text=window_list[j], compound="top", command=lambda id=j: window_manager(j))	
+			#btn = tk.Button(master=frame, text=window_list[j], compound="top", command=partial(window_manager, btn['text']))	 
 			#btn.bind("<Button-1>", identifier_widget) # "<Button-1>" corresponde ao botão esquerdo do mouse
-###########################################################################################################################################
 
-
-
-
-			btn_ref_list.update({str(id(btn)): btn})	# Adiciona ao dicionario para manter a referência
+			btn_ref_list.update({window_list[j]: btn})	# Adiciona ao dicionario para manter a referência
 
 			foto = tk.PhotoImage(master=btn, file=images[j], width=35, height=35) 
 			btn["image"] = foto
@@ -151,7 +159,6 @@ class Window:
 		self.window.mainloop()
 
 	def quit(self):
-		print("Saindo... ... ...")
 		self.window.destroy()
 
 	def exit(self):
