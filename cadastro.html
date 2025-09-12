@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+
+		<!-- <link rel="stylesheet" href="styles.css"> -->
+
+		<!-- 
+			CSS can be added to HTML documents in 3 ways:
+
+			Inline - by using the style attribute inside HTML elements
+			Internal - by using a <style> element in the <head> section
+			External - by using a <link> element to link to an external CSS file
+		-->
+		<style>
+			div {
+				border: 2px solid black;
+				margin: 50px;
+				padding: 20px;
+				/*
+				color: red;
+  				font-family: courier;
+  				font-size: 160%;
+  				background-color: lightblue;
+  				text-align: center;
+  				*/
+			}
+			form {
+
+			}
+
+			p{
+				
+			}
+
+		</style>
+
+
+		<meta charset="utf-8">
+		<!-- tag abaixo é prática recomendada para páginas web modernas, para adptar a telas diferentes. -->
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>Cadastro</title>
+
+		<script>
+			// javascript 
+
+			function validateForm(event){
+				event.preventDefault();		 // Impede o envio imediato do formulário.
+			}
+
+			/*
+				Comentario
+				multi
+				linha
+			*/
+
+		</script>
+		
+	</head>
+
+	<body>
+		<!--tag_div_atributos:
+
+			Atributo	Descrição
+			id			Um identificador único para o elemento, usado para estilização ou scripts.
+			class		Uma ou mais classes que podem ser usadas para aplicar estilos CSS.
+			style		Permite aplicar estilos CSS inline diretamente ao elemento.
+			title		Um texto que aparece como uma dica quando o mouse passa sobre o elemento.
+			data-*		Atributos personalizados que podem armazenar informações adicionais.
+			lang		Define o idioma do conteúdo dentro da <div>.
+			tabindex	Define a ordem de tabulação do elemento quando o usuário navega com o teclado.
+			hidden		Indica que o elemento deve ser oculto.
+		-->
+
+		<p style="color: blue;">cadastro de usuários</p>
+		<div id="div-user">
+			<!-- tag_form_atributos:
+				Atributo		Descrição
+				action			A URL para a qual os dados do formulário serão enviados quando submetidos.
+				method			O método HTTP a ser usado ao enviar os dados (GET ou POST).
+				enctype			O tipo de codificação a ser usado ao enviar o formulário (ex: application/x-www-form-urlencoded, multipart/form-data).
+				target			Especifica onde abrir a resposta após o envio do formulário (ex: _blank, _self).
+				name			Um nome para o formulário, que pode ser usado em scripts.
+				id				Um identificador único para o formulário, usado para estilização ou scripts.
+				autocomplete	Indica se o navegador deve habilitar o preenchimento automático dos campos do formulário (on ou off).
+				novalidate		Indica que o formulário não deve ser validado ao ser enviado.
+				accept-charset	Especifica quais conjuntos de caracteres são aceitos ao enviar o formulário.
+				onsubmit		chama função ao submeter formulario.
+			-->	
+			<form action="URL" method="get" taget="_blank" name="form-user" id="form-user" onsubmit="validateForm(event)">
+				<label>User</label> <br>
+				<input type="text" name="user" id="" value="" required> <br>
+				<label>Password</label> <br>
+				<input type="text" name="password" id="" value="" required> <br>
+				<label>Type</label> <br>
+				<input type="text" name="text" id="" value="" required> <br>
+				<label>E-mail</label> <br>
+				<input type="text" name="email" id="" value=""> <br>
+				<label>Phone</label> <br>
+				<input type="text" name="phone" id="" value="" > <br>
+				<input type="hidden" name="op_type" value="2.1"> <br>
+
+				<br>
+				<input type="submit" value="Submit Form">
+			</form>
+		</div>
+
+		<p>Cadastro de Produtos</p>
+		<div>
+			<form>
+				
+			</form>
+
+		</div>
+
+	</body>
+</html>

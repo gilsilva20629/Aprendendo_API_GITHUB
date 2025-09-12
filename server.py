@@ -22,17 +22,17 @@ def home():
 	if request.headers["Content-Type"] == "application/x-www-form-urlencoded" :
 		name = request.form["name_user"]
 		password = request.form["password"]
-		op_type = request.form["extra"]
+		op_type = request.form["op_type"]
 
 	elif request.headers["Content-Type"] == "text/html; charset=utf-8" :
 		name = request.form.get("name_user")
 		password = request.form.get("password")
-		op_type = request.form.get("extra")
+		op_type = request.form.get("op_type")
 
 	elif request.headers["Content-Type"] == "application/json" :
 		name = request.json.get("name_user")
 		password = request.json.get("password")
-		op_type = request.json.get("extra")
+		op_type = request.json.get("op_type")
 	else:
 		resposta = "content/media type do not supported: "+request.headers["Content-Type"]
 		print(resposta)
