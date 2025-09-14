@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 
-<html>
+<html>	
 	<head>
 		<title>Login</title>
 
 		<!-- javascript-->
+		<script type="module" src="./test.js">
+			// import function from ./aquivo.js
+
+		</script>
+
+
 		<script>
 			//JavaScript
 			function OnClick(){
@@ -36,7 +42,7 @@
                 	body: JSON.stringify({
                 		name_user: name_user,
                     	password: password,
-                    	extra: document.getElementById("extra").value
+                    	extra: document.getElementById("op_type").value
                     })
 				})
 				.then(response => {
@@ -75,7 +81,7 @@
 			<input id="name_user" type="text" name="name_user" value="" required> </br>
 			<label>password<label><br>
 			<input id="password" type="text" name="password" value="" required> <br>
-			<input type="hidden" id="extra" name="extra" value="1">
+			<input type="hidden" id="op_type" name="op_type" value="1">
 			<br>
 			<button type="button" onclick="" disabled>login</button>
 			<input type="submit" value="Send">		
@@ -108,7 +114,7 @@
 			// document.getElementById("demo").style.display = "block"; 	bloqueia elemento
 			// document.getElementById("demo").style.display = "none"; 		oculta elemento
 
-			//innerHTML --> ecreve no conteudo do elemento
+			//innerHTML ou innerText --> ecreve no conteudo do elemento
 			//document.write("document.write: Hello World!") 		//--> ecreve no Html
 			//window.alert("window.alert: Hello World!")			//--> ecreve no popup do navegador
 			//console.log("console.log: Hello Wolrd!")			//--> ecreve na ferramentas de desenvolvedor

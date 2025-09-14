@@ -2,6 +2,15 @@
 
 <html>
 	<head>
+		<!-- <style src="./test.js"> -->
+		<style type="module">	
+			import validateForm from "./test.js"
+		</style>
+
+
+
+
+
 
 		<!-- <link rel="stylesheet" href="styles.css"> -->
 
@@ -15,7 +24,7 @@
 		<style>
 			div {
 				border: 2px solid black;
-				margin: 50px;
+				margin: 20px;
 				padding: 20px;
 				/*
 				color: red;
@@ -30,7 +39,7 @@
 			}
 
 			p{
-				
+
 			}
 
 		</style>
@@ -59,6 +68,19 @@
 	</head>
 
 	<body>
+		<h1>CADASTROS GERAIS DO SISTEMA</h1>
+		<br>
+		
+		<div>
+			<p>Tipo de Cadastro:</p>
+			<select name="type-cad" id="type-cad">
+				<option value="user">Cadastro Usuario</option>
+				<option value="client">Cadastro Cliente</option>
+				<option value="product">Cadastro Produto</option>
+			</select>
+		</div>
+
+
 		<!--tag_div_atributos:
 
 			Atributo	Descrição
@@ -72,7 +94,7 @@
 			hidden		Indica que o elemento deve ser oculto.
 		-->
 
-		<p style="color: blue;">cadastro de usuários</p>
+		<p style="color: blue; background-color: yellow;">Cadastro de Usuários</p>
 		<div id="div-user">
 			<!-- tag_form_atributos:
 				Atributo		Descrição
@@ -87,30 +109,88 @@
 				accept-charset	Especifica quais conjuntos de caracteres são aceitos ao enviar o formulário.
 				onsubmit		chama função ao submeter formulario.
 			-->	
-			<form action="URL" method="get" taget="_blank" name="form-user" id="form-user" onsubmit="validateForm(event)">
+			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" taget="_blank" name="form-user" id="form-user" onsubmit="validateForm(event)">
 				<label>User</label> <br>
 				<input type="text" name="user" id="" value="" required> <br>
 				<label>Password</label> <br>
 				<input type="text" name="password" id="" value="" required> <br>
 				<label>Type</label> <br>
 				<input type="text" name="text" id="" value="" required> <br>
-				<label>E-mail</label> <br>
-				<input type="text" name="email" id="" value=""> <br>
-				<label>Phone</label> <br>
-				<input type="text" name="phone" id="" value="" > <br>
 				<input type="hidden" name="op_type" value="2.1"> <br>
 
 				<br>
-				<input type="submit" value="Submit Form">
+				<input type="submit" value="Submit Form">	
 			</form>
 		</div>
 
-		<p>Cadastro de Produtos</p>
-		<div>
-			<form>
-				
-			</form>
+		<p style="color: blue; background-color: yellow;">Cadastro de Clientes</p>
+		<div id="div-client">
+			<!-- tag_form_atributos:
+				Atributo		Descrição
+				action			A URL para a qual os dados do formulário serão enviados quando submetidos.
+				method			O método HTTP a ser usado ao enviar os dados (GET ou POST).
+				enctype			O tipo de codificação a ser usado ao enviar o formulário (ex: application/x-www-form-urlencoded, multipart/form-data).
+				target			Especifica onde abrir a resposta após o envio do formulário (ex: _blank, _self).
+				name			Um nome para o formulário, que pode ser usado em scripts.
+				id				Um identificador único para o formulário, usado para estilização ou scripts.
+				autocomplete	Indica se o navegador deve habilitar o preenchimento automático dos campos do formulário (on ou off).
+				novalidate		Indica que o formulário não deve ser validado ao ser enviado.
+				accept-charset	Especifica quais conjuntos de caracteres são aceitos ao enviar o formulário.
+				onsubmit		chama função ao submeter formulario.
+			-->	
+			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" taget="_blank" name="form-client" id="form-client" onsubmit="validateForm(event)">
+				<label>Nome</label> <br>
+				<input type="text" name="user" id="" value="" required> <br>
+				<label>Endereço</label> <br>
+				<input type="text" name="address" id="" value="" required> <br>
+				<label>Contato</label> <br>
+				<input type="text" name="contact" id="" value=""> <br>
+				<input type="hidden" name="op_type" value="2.2"> <br>
 
+				<br>
+				<input type="submit" value="Submit Form">	
+			</form>
+		</div>
+
+		<p style="color: blue; background-color: yellow">Cadastro de Produtos</p>
+		<div>
+			<form action="http://127.0.0.1:5000/my_endpoint" method="GET" target="_blank" name="form-product" id="form-product" onsubmit="validateForm(event)">
+
+				<!-- input types:
+					<input type="button">
+					<input type="checkbox">
+					<input type="color">
+					<input type="date">
+					<input type="datetime-local">
+					<input type="email">
+					<input type="file">
+					<input type="hidden">
+					<input type="image">
+					<input type="month">
+					<input type="number">
+					<input type="password">
+					<input type="radio">
+					<input type="range">
+					<input type="reset">
+					<input type="search">
+					<input type="submit">
+					<input type="tel">
+					<input type="text"> (default value)
+					<input type="time">
+					<input type="url">
+					<input type="week">
+				-->
+
+				<label class="Cad-Prod">Product Name</label> <br>
+				<input class="Cad-Prod" type="text" id="" name="produto-name" value="" required> <br>
+				<label class="Cad-Prod">Category</label> <br>
+				<input class="Cad-Prod" type="text" id="" name="category" value="" required> <br>
+				<label class="Cad-Prod">unit</label> <br>
+				<input class="Cad-Prod" type="text" id="" name="unit" value="" required> <br>
+				<input type="hidden" name="op_type" value="2.3">
+				<br>
+				<input type="submit" value="submit form">	
+			</form>
 		</div>
 
 	</body>

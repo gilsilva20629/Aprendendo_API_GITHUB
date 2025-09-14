@@ -19,6 +19,14 @@ def home():
 
 	# ------------ Recepcao do request----------------
 	
+		'''
+		application/x-www-form-urlencoded
+		multipart/form-data
+		text/plain
+		text/html; charset=utf-8
+		application/json
+		'''
+
 	if request.headers["Content-Type"] == "application/x-www-form-urlencoded" :
 		name = request.form["name_user"]
 		password = request.form["password"]
