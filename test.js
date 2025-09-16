@@ -15,12 +15,15 @@ function validateForm(event){
 	*/
 
 	try{
-		console.log(form.parameters.name);
-		console.log(form.name);
-		console.log(form["name"]);
+		console.log("Nome do formulario", form.name.value);
 	}
 	catch(err){
-		console.log(err.message)
+		console.log(err.message); 	// A CATCH declaração define um bloco de código para lidar com qualquer erro.
+	}
+	finally{
+		// A FINALLY instrução define um bloco de código a ser executado independentemente do resultado.
+
+		// throw new Error("Esse e um erro que eu criei agora")
 	}
 
 };
