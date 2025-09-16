@@ -5,7 +5,7 @@
 		<script type="module">
 			// javascript 
 			import validateForm from "./test.js";
-			validateForm(event);
+			
 
 			/*
 				Comentario
@@ -108,7 +108,7 @@
 				<label>Password</label> <br>
 				<input type="text" name="password" id="" value="" required> <br>
 				<label>Type</label> <br>
-				<input type="text" name="text" id="" value="" required> <br>
+				<input type="text" name="type" id="" value="" required> <br>
 				<input type="hidden" name="op_type" value="2.1"> <br>
 
 				<br>
@@ -133,7 +133,7 @@
 			-->	
 			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" target="_blank" name="form-client" id="form-client" onsubmit="validateForm(event)">
 				<label>Nome</label> <br>
-				<input type="text" name="user" id="" value="" required> <br>
+				<input type="text" name="client" id="" value="" required> <br>
 				<label>Endereço</label> <br>
 				<input type="text" name="address" id="" value="" required> <br>
 				<label>Contato</label> <br>
@@ -180,9 +180,9 @@
 				<input class="Cad-Prod" type="text" id="" name="category" value="" required> <br>
 				<label class="Cad-Prod">unit</label> <br>
 				<input class="Cad-Prod" type="text" id="" name="unit" value="" required> <br>
-				<input type="hidden" name="op_type" value="2.3">
+				<input class="Cad-Prod" type="hidden" name="op_type" value="2.3">
 				<br>
-				<input type="submit" value="submit form">	
+				<input class="Cad-Prod" type="submit" value="submit form">	
 			</form>
 		</div>
 	</body>
