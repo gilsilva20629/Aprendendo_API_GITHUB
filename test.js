@@ -1,5 +1,3 @@
-
-
 function validateForm(event){
 	event.preventDefault();	// Impede o envio imediato do formulário.
 	let form = event.target; // 'target' elemento que disparou o evento
@@ -14,7 +12,7 @@ function validateForm(event){
 	A THROW declaração define um erro personalizado.
 	*/
 
-	try{
+	try{	
 		console.log("Nome do formulario", form.name.value);
 	}
 	catch(err){
@@ -28,6 +26,6 @@ function validateForm(event){
 
 };
 
-export default validateForm;
+//export default validateForm;
 
 //window.document.getElementById("")
