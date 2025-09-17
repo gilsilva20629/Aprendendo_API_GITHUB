@@ -2,29 +2,22 @@
 
 <html>
 	<head>
-			<!--
-		<script type="module"> // script tipo modulo apenas para importação e com escopo local.
-			// javascript  import validateForm from "./test.js";
 			
-			
+		<script type="module"> // escopo local necessário 'export' na origem.
+			// javascript  
+			import VMvalidateForm from "./modulos/js/funcoesGerais.js";
 
+			window.VMvalidateForm = VMvalidateForm; // tornando a função de local  para global escopo.
+			
 			/*
 				Comentario
 				multi linha
 				javascript
 			*/
 		</script>
-			-->
 
-		<script > // script padrao para codigo
-			//validateForm(event);
-
-		</script>
-
-	
-		<script src="./test.js"> // 
-			// javascript 
-			
+		<script src="./test.js"> 
+			// escopo global importa sem a necessidade de type='mudule'. 	
 		</script>
 	
 
@@ -154,7 +147,8 @@
 
 		<p style="color: blue; background-color: yellow">Cadastro de Produtos</p>
 		<div>
-			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" target="_blank" name="form-product" id="form-product" onsubmit="validateForm(event)">
+			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" target="_blank" name="form-product" 
+			id="form-product" onsubmit="window.VMvalidateForm(event)">
 
 				<!-- input types:
 					<input type="button">
