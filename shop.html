@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Shop</title>
+
+		<script>
+			let selected_option = "user";
+
+			function setOption(value){
+				selected_option = this.value; // 'this' refere-se ao elemento que disparou o evento
+				console.log(selected_option);
+			}
+
+		</script>
+		
+	</head>
+
+	<body>
+		<div>
+			<p>Tipo de Cadastro:</p>
+			<select name="type-cad" id="type-cad">
+				<option class="select" value="user">Cadastro Usuario</option>
+				<option class="select" value="client">Cadastro Cliente</option>
+				<option class="select" value="product">Cadastro Produto</option>
+			</select>
+		</div>
+		
+		<script >
+			const selector = window.document.getElementById("type-cad");
+			selector.addEventListener("change", setOption); 
+		</script>
+		<!--
+		<script>
+			//exemplo de while
+			while(selected_option != "user"){
+				
+				setInterval()
+				setTimeout( () => { console.log(selected_option) }, 5000); // setTimeout pausa no script por 5 segundos
+			}
+
+		</script>
+		-->
+	</body>
+</html>
+

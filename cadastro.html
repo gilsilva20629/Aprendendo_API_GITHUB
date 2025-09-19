@@ -2,6 +2,16 @@
 
 <html>
 	<head>
+		<script>
+			let selected_option = "user";
+
+			function setOption(value){
+				selected_option = this.value; // 'this' refere-se ao elemento que disparou o evento
+				console.log(selected_option);
+			}
+
+
+		</script>
 			
 		<script type="module"> // escopo local necessário 'export' na origem.
 			// javascript  
@@ -63,15 +73,55 @@
 	<body>
 		<h1>CADASTROS GERAIS DO SISTEMA</h1>
 		<br>
-		
+
 		<div>
 			<p>Tipo de Cadastro:</p>
 			<select name="type-cad" id="type-cad">
-				<option value="user">Cadastro Usuario</option>
-				<option value="client">Cadastro Cliente</option>
-				<option value="product">Cadastro Produto</option>
+				<option class="select" value="user">Cadastro Usuario</option>
+				<option class="select" value="client">Cadastro Cliente</option>
+				<option class="select" value="product">Cadastro Produto</option>
 			</select>
 		</div>
+		<script >
+			const selector = window.document.getElementById("type-cad");
+			selector.addEventListener("change", setOption); 
+		</script>
+		
+	<!--
+		<script>
+
+			seletor = window.document.getElementsByTagName("option");
+			//console.log(seletor);
+			//console.log(seletor.length);
+			//console.log(typeof seletor);
+			
+			for (i = 0;  i < seletor.length ; i++) {
+				//console.log(seletor[i].value);
+
+				if(seletor[i].selected){
+					selected_option = seletor[i].value;
+
+				/*
+					for(k in seletor[i]){ // listar propriedades do elemento.
+						//console.log('${k}: ${seletor[i][k]}');
+						//console.log(k, ":", seletor[i][k]); // Essa funciona.
+
+						
+						if (seletor[i].hasOwnProperty(k)) { // hasOwnProperty() Verifica se a propriedade é do próprio objeto
+							console.log("${k}: ${seletor[i][k]}");
+							console.log(k, ":", seletor[i][k]);
+						}
+						
+					}
+					//console.log("Selecionado: ", seletor[i].innerHTML);
+					//console.log("Selecionado: ", seletor[i].innerText);
+					//console.log("Selecionado: ", seletor[i].value);
+				*/
+				}
+			}
+			
+		</script> 
+	-->
 
 
 		<!--tag_div_atributos:
@@ -103,16 +153,16 @@
 				onsubmit		chama função ao submeter formulario.
 			-->	
 			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" target="_blank" name="form-user" id="form-user" onsubmit="validateForm(event)">
-				<label>User</label> <br>
-				<input type="text" name="user" id="" value="" required> <br>
-				<label>Password</label> <br>
-				<input type="text" name="password" id="" value="" required> <br>
-				<label>Type</label> <br>
-				<input type="text" name="type" id="" value="" required> <br>
-				<input type="hidden" name="op_type" value="2.1"> <br>
+				<label class="Cad-User">User</label> <br>
+				<input class="Cad-User" type="text" name="user" id="" value="" required> <br>
+				<label class="Cad-User">Password</label> <br>
+				<input class="Cad-User" type="text" name="password" id="" value="" required> <br>
+				<label class="Cad-User">Type</label> <br>
+				<input class="Cad-User" type="text" name="type" id="" value="" required> <br>
+				<input class="Cad-User" type="hidden" name="op_type" value="2.1"> <br>
 
 				<br>
-				<input type="submit" value="Submit Form">	
+				<input class="Cad-User" type="submit" value="Submit Form">	
 			</form>
 		</div>
 
@@ -132,16 +182,16 @@
 				onsubmit		chama função ao submeter formulario.
 			-->	
 			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" target="_blank" name="form-client" id="form-client" onsubmit="validateForm(event)">
-				<label>Nome</label> <br>
-				<input type="text" name="client" id="" value="" required> <br>
-				<label>Endereço</label> <br>
-				<input type="text" name="address" id="" value="" required> <br>
-				<label>Contato</label> <br>
-				<input type="text" name="contact" id="" value=""> <br>
-				<input type="hidden" name="op_type" value="2.2"> <br>
+				<label class="Cad-Client">Nome</label> <br>
+				<input class="Cad-Client" type="text" name="client" id="" value="" required> <br>
+				<label class="Cad-Client">Endereço</label> <br>
+				<input class="Cad-Client" type="text" name="address" id="" value="" required> <br>
+				<label class="Cad-Client">Contato</label> <br>
+				<input class="Cad-Client" type="text" name="contact" id="" value=""> <br>
+				<input class="Cad-Client" type="hidden" name="op_type" value="2.2"> <br>
 
 				<br>
-				<input type="submit" value="Submit Form">	
+				<input class="Cad-Client" type="submit" value="Submit Form">	
 			</form>
 		</div>
 

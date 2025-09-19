@@ -24,8 +24,20 @@ function VMvalidateForm(event){
 		// throw new Error("Esse e um erro que eu criei agora")
 	}
 
-};
+}   // ; verificar se ponto e virgula faz falta.
 
 export default VMvalidateForm;
 
-//window.document.getElementById("")
+
+
+
+function selectedOption(){
+//Verifica qual opcao está selecionada em select tag
+//Precisa ajustar para receber o select_tag e não a lista de option_tag
+	select = window.document.getElementsByTagName("option");
+	for (i = 0;  i < select.length ; i++) {
+		if(select[i].selected){
+			selected_option = select[i].value;
+		}
+	}
+}
