@@ -6,10 +6,48 @@
 			let selected_option = "user";
 
 			function setOption(value){
-				selected_option = this.value; // 'this' refere-se ao elemento que disparou o evento
+				selected_option = this.value; // 'this' refere-se ao elemento no caso o 'select' que disparou o evento
 				console.log(selected_option);
+				disableElement();
 			}
 
+			function disableElement(){
+				if(selected_option == "User"){
+					const elements_Cad_Client = window.document.getElementsByClass("Cad-Client");
+					const elements_Cad_Product = window.document.getElementsByClass("Cad-Product");
+
+					for( E in elements_Cad_Client){
+						E.disabled = true;
+					}
+
+					for(E in elements_Cad_Product){
+						E.disabled = true;
+					}
+				}else if(selected_option = "Client"){
+					const elements_Cad_User = window.document.getElementsByClass("Cad-User");
+					const elements_Cad_Product = window.document.getElementsByClass("Cad-Product");
+
+					for( E in elements_Cad_User){
+						E.disabled = true;
+					}
+
+					for(E in elements_Cad_Product){
+						E.disabled = true;
+					}
+
+				}else{
+					const elements_Cad_User = window.document.getElementsByClass("Cad-User");
+					const elements_Cad_Client = window.document.getElementsByClass("Cad-Client");
+
+					for( E in elements_Cad_User){
+						E.disabled = true;
+					}
+
+					for(E in elements_Cad_Client){
+						E.disabled = true;
+					}
+				}
+			}
 
 		</script>
 			
@@ -27,7 +65,7 @@
 		</script>
 
 		<script src="./test.js"> 
-			// escopo global importa sem a necessidade de type='mudule'. 	
+			// src atributo importa com escopo global sem a necessidade de type='mudule' e sem export na origem. 	
 		</script>
 	
 
@@ -86,7 +124,7 @@
 			const selector = window.document.getElementById("type-cad");
 			selector.addEventListener("change", setOption); 
 		</script>
-		
+
 	<!--
 		<script>
 
