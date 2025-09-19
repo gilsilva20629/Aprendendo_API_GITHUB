@@ -12,7 +12,7 @@
 			}
 
 			function disableElement(){
-				if(selected_option == "User"){
+				if(selected_option == "user"){
 					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
 					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
 
@@ -23,7 +23,7 @@
 					for(E in elements_Cad_Product){
 						E.disabled = true;
 					}
-				}else if(selected_option = "Client"){
+				}else if(selected_option = "client"){
 					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
 					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
 
@@ -122,7 +122,7 @@
 		</div>
 		<script >
 			const selector = window.document.getElementById("type-cad");
-			selector.addEventListener("change", setOption); 
+			selector.addEventListener("change", setOption);
 		</script>
 
 	<!--
@@ -274,5 +274,9 @@
 				<input class="Cad-Prod" type="submit" value="submit form">	
 			</form>
 		</div>
+
+		<script>
+			disableElement();
+		</script>
 	</body>
 </html>
