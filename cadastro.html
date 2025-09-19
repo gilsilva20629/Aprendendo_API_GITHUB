@@ -20,11 +20,13 @@
 					//console.log(elements_Cad_Product);
 					console.log(1);
 					for( E in elements_Cad_Client){
+						console.log(E);
 						E.disabled = true;
 						console.log(E.disabled);
 					}
 
 					for(E in elements_Cad_Product){
+						console.log(E);
 						E.disabled = true;
 						console.log(E.disabled);
 					}
@@ -34,11 +36,13 @@
 					console.log(2);
 
 					for( E in elements_Cad_User){
+						console.log(E);
 						E.disabled = true;
 						console.log(E.disabled);
 					}
 
 					for(E in elements_Cad_Product){
+						console.log(E);
 						E.disabled = true;
 						console.log(E.disabled);
 					}
@@ -49,11 +53,13 @@
 					console.log(3);
 
 					for( E in elements_Cad_User){
+						console.log(E);
 						E.disabled = true;
 						console.log(E.disabled);
 					}
 
 					for(E in elements_Cad_Client){
+						console.log(E);
 						E.disabled = true;
 						console.log(E.disabled);
 					}
@@ -208,7 +214,7 @@
 				<input class="Cad-User" type="text" name="password" id="password" value="" required> <br>
 				<label>Type</label> <br>
 				<input class="Cad-User" type="text" name="type" id="type" value="" required> <br>
-				<input class="Cad-User" type="hidden" name="op_type" value="2.1"> <br>
+				<input type="hidden" name="op_type" value="2.1"> <br>
 
 				<br>
 				<input class="Cad-User" type="submit" value="Submit Form">	
@@ -237,7 +243,7 @@
 				<input class="Cad-Client" type="text" name="address" id="address" value="" required> <br>
 				<label>Contato</label> <br>
 				<input class="Cad-Client" type="text" name="contact" id="contact" value=""> <br>
-				<input class="Cad-Client" type="hidden" name="op_type" value="2.2"> <br>
+				<input type="hidden" name="op_type" value="2.2"> <br>
 
 				<br>
 				<input class="Cad-Client" type="submit" value="Submit Form">	
@@ -280,7 +286,7 @@
 				<input class="Cad-Prod" type="text" id="category" name="category" value="" required> <br>
 				<label>unit</label> <br>
 				<input class="Cad-Prod" type="text" id="unit" name="unit" value="" required> <br>
-				<input class="Cad-Prod" type="hidden" name="op_type" value="2.3">
+				<input type="hidden" name="op_type" value="2.3">
 				<br>
 				<input class="Cad-Prod" type="submit" value="submit form">	
 			</form>
