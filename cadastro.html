@@ -11,7 +11,49 @@
 				disableElement();
 			}
 
-			
+			function disableElement(){
+				if(selected_option == "user"){
+					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
+					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
+					//console.log(elements_Cad_Client);
+					//console.log("...");
+					//console.log(elements_Cad_Product);
+					console.log(1);
+					for( E in elements_Cad_Client){
+						E.disabled = true;
+						console.log(E.disabled);
+					}
+
+					for(E in elements_Cad_Product){
+						E.disabled = true;
+					}
+				}else if(selected_option = "client"){
+					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
+					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
+					console.log(2);
+
+					for( E in elements_Cad_User){
+						E.disabled = true;
+					}
+
+					for(E in elements_Cad_Product){
+						E.disabled = true;
+					}
+
+				}else{
+					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
+					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
+					console.log(3);
+
+					for( E in elements_Cad_User){
+						E.disabled = true;
+					}
+
+					for(E in elements_Cad_Client){
+						E.disabled = true;
+					}
+				}
+			}
 
 		</script>
 			
@@ -185,11 +227,11 @@
 			-->	
 			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" target="_blank" name="form-client" id="form-client" onsubmit="validateForm(event)">
 				<label>Nome</label> <br>
-				<input class="Cad-Client" type="text" name="client" id="" value="" required> <br>
+				<input class="Cad-Client" type="text" name="client" id="client" value="" required> <br>
 				<label>Endereço</label> <br>
-				<input class="Cad-Client" type="text" name="address" id="" value="" required> <br>
+				<input class="Cad-Client" type="text" name="address" id="address" value="" required> <br>
 				<label>Contato</label> <br>
-				<input class="Cad-Client" type="text" name="contact" id="" value=""> <br>
+				<input class="Cad-Client" type="text" name="contact" id="contact" value=""> <br>
 				<input class="Cad-Client" type="hidden" name="op_type" value="2.2"> <br>
 
 				<br>
@@ -228,63 +270,15 @@
 				-->
 
 				<label>Product Name</label> <br>
-				<input class="Cad-Prod" type="text" id="" name="produto-name" value="" required> <br>
+				<input class="Cad-Prod" type="text" id="produto-name" name="produto-name" value="" required> <br>
 				<label>Category</label> <br>
-				<input class="Cad-Prod" type="text" id="" name="category" value="" required> <br>
+				<input class="Cad-Prod" type="text" id="category" name="category" value="" required> <br>
 				<label>unit</label> <br>
-				<input class="Cad-Prod" type="text" id="" name="unit" value="" required> <br>
+				<input class="Cad-Prod" type="text" id="unit" name="unit" value="" required> <br>
 				<input class="Cad-Prod" type="hidden" name="op_type" value="2.3">
 				<br>
 				<input class="Cad-Prod" type="submit" value="submit form">	
 			</form>
 		</div>
-
-		<script>
-			function disableElement(){
-				if(selected_option == "user"){
-					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
-					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
-					//console.log(elements_Cad_Client);
-					//console.log("...");
-					//console.log(elements_Cad_Product);
-					console.log(1);
-					for( E in elements_Cad_Client){
-						E.disabled = true;
-						console.log(E.disabled);
-					}
-
-					for(E in elements_Cad_Product){
-						E.disabled = true;
-					}
-				}else if(selected_option = "client"){
-					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
-					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
-					console.log(2);
-
-					for( E in elements_Cad_User){
-						E.disabled = true;
-					}
-
-					for(E in elements_Cad_Product){
-						E.disabled = true;
-					}
-
-				}else{
-					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
-					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
-					console.log(3);
-
-					for( E in elements_Cad_User){
-						E.disabled = true;
-					}
-
-					for(E in elements_Cad_Client){
-						E.disabled = true;
-					}
-				}
-			}
-			
-			disableElement();
-		</script>
 	</body>
 </html>
