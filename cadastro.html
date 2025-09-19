@@ -13,8 +13,8 @@
 
 			function disableElement(){
 				if(selected_option == "User"){
-					const elements_Cad_Client = window.document.getElementsByClass("Cad-Client");
-					const elements_Cad_Product = window.document.getElementsByClass("Cad-Product");
+					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
+					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
 
 					for( E in elements_Cad_Client){
 						E.disabled = true;
@@ -24,8 +24,8 @@
 						E.disabled = true;
 					}
 				}else if(selected_option = "Client"){
-					const elements_Cad_User = window.document.getElementsByClass("Cad-User");
-					const elements_Cad_Product = window.document.getElementsByClass("Cad-Product");
+					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
+					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
 
 					for( E in elements_Cad_User){
 						E.disabled = true;
@@ -36,8 +36,8 @@
 					}
 
 				}else{
-					const elements_Cad_User = window.document.getElementsByClass("Cad-User");
-					const elements_Cad_Client = window.document.getElementsByClass("Cad-Client");
+					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
+					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
 
 					for( E in elements_Cad_User){
 						E.disabled = true;
