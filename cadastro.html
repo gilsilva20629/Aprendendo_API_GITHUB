@@ -244,7 +244,10 @@
 				if(selected_option == "user"){
 					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
 					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
-
+					console.log(elements_Cad_Client);
+					console.log("...");
+					console.log(elements_Cad_Product);
+					console.log(1);
 					for( E in elements_Cad_Client){
 						E.disabled = true;
 					}
@@ -255,6 +258,7 @@
 				}else if(selected_option = "client"){
 					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
 					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
+					console.log(2);
 
 					for( E in elements_Cad_User){
 						E.disabled = true;
@@ -267,7 +271,8 @@
 				}else{
 					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
 					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
-
+					console.log(3);
+					
 					for( E in elements_Cad_User){
 						E.disabled = true;
 					}
