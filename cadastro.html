@@ -11,43 +11,7 @@
 				disableElement();
 			}
 
-			function disableElement(){
-				if(selected_option == "user"){
-					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
-					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
-
-					for( E in elements_Cad_Client){
-						E.disabled = true;
-					}
-
-					for(E in elements_Cad_Product){
-						E.disabled = true;
-					}
-				}else if(selected_option = "client"){
-					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
-					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
-
-					for( E in elements_Cad_User){
-						E.disabled = true;
-					}
-
-					for(E in elements_Cad_Product){
-						E.disabled = true;
-					}
-
-				}else{
-					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
-					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
-
-					for( E in elements_Cad_User){
-						E.disabled = true;
-					}
-
-					for(E in elements_Cad_Client){
-						E.disabled = true;
-					}
-				}
-			}
+			
 
 		</script>
 			
@@ -268,7 +232,7 @@
 				<label class="Cad-Prod">Category</label> <br>
 				<input class="Cad-Prod" type="text" id="" name="category" value="" required> <br>
 				<label class="Cad-Prod">unit</label> <br>
-				<input class="Cad-Prod" type="text" id="" name="unit" value="" required disabled> <br>
+				<input class="Cad-Prod" type="text" id="" name="unit" value="" required> <br>
 				<input class="Cad-Prod" type="hidden" name="op_type" value="2.3">
 				<br>
 				<input class="Cad-Prod" type="submit" value="submit form">	
@@ -276,6 +240,44 @@
 		</div>
 
 		<script>
+			function disableElement(){
+				if(selected_option == "user"){
+					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
+					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
+
+					for( E in elements_Cad_Client){
+						E.disabled = true;
+					}
+
+					for(E in elements_Cad_Product){
+						E.disabled = true;
+					}
+				}else if(selected_option = "client"){
+					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
+					const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
+
+					for( E in elements_Cad_User){
+						E.disabled = true;
+					}
+
+					for(E in elements_Cad_Product){
+						E.disabled = true;
+					}
+
+				}else{
+					const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
+					const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
+
+					for( E in elements_Cad_User){
+						E.disabled = true;
+					}
+
+					for(E in elements_Cad_Client){
+						E.disabled = true;
+					}
+				}
+			}
+			
 			disableElement();
 		</script>
 	</body>
