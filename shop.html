@@ -4,45 +4,71 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Shop</title>
-
-		<script>
-			let selected_option = "user";
-
-			function setOption(value){
-				selected_option = this.value; // 'this' refere-se ao elemento que disparou o evento
-				console.log(selected_option);
-			}
-
-		</script>
-		
+		<title>Shop</title>	
 	</head>
 
 	<body>
-		<div>
-			<p>Tipo de Cadastro:</p>
-			<select name="type-cad" id="type-cad">
-				<option class="select" value="user">Cadastro Usuario</option>
-				<option class="select" value="client">Cadastro Cliente</option>
-				<option class="select" value="product">Cadastro Produto</option>
-			</select>
+		<div style="width: 25%; height:70px; border:1px solid black; margin: 10px; padding: 10px">
+			<img src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp" width="100%" height="70px">
+		</div>
+		<div style="width: 25%; height:70px; border:1px solid black; margin: 10px; padding: 10px">
+			<img width="100%" height="70px"> 
+				<a link="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp" width="100%" height="70px">
+			</img>
 		</div>
 		
-		<script >
-			const selector = window.document.getElementById("type-cad");
-			selector.addEventListener("change", setOption); 
-		</script>
-		<!--
 		<script>
-			//exemplo de while
-			while(selected_option != "user"){
-				
-				setInterval()
-				setTimeout( () => { console.log(selected_option) }, 5000); // setTimeout pausa no script por 5 segundos
-			}
+			fetch('http://127.0.0.1:5000/products', {
+				method: "GET",
+				//header: {"Contente-Type": "text/html", "Access-Control-Allow-Origin": "no-cors" },
+				header: {
+				//"Contente-Type": "application/json", // referente ao (body)
+				"Access-Control-Allow-Origin": "no-cors"
+				 }
 
+			})
+			.then(res => res.json())
+			//.then(data => console.log(data["products"][0]));
+			.then(data => console.log("Teste Server: ", data["products"][0]["images"][0]));
+		</script>
+		
+		<!--
+		<script>	
+			fetch('https://dummyjson.com/products?limit=0') // todos os itens
+			.then(response => {
+
+				res = response.json();
+				console.log(res);
+				console.log("___________________");
+
+				//return response.json();
+				//return response.text();
+				return res;
+			})
+			.then(data => console.log(data["products"][0]["images"]));
 		</script>
 		-->
+		
+
+		<!--
+		<script>	
+			fetch('https://dummyjson.com/products/1')
+			.then(response => {
+
+				res = response.json();
+				console.log(res);
+				console.log("___________________");
+
+				//return response.json();
+				//return response.text();
+				return res;
+			})
+			.then(data => console.log(data["images"][0]));
+		</script>
+		-->
+
+		<p id="paragrafo"></p>
+
 	</body>
 </html>
 

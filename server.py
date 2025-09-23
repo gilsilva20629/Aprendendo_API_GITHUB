@@ -3,6 +3,9 @@ from flask_cors import CORS
 import communication_database as CDB
 import user
 import teste
+import json
+
+
 
 app = Flask(__name__)
 CORS(app)  # Isso permite CORS para todas as rotas
@@ -18,14 +21,13 @@ que permitem que os servidores descrevam um conjunto de origens que possuem perm
 def home():
 
 	# ------------ Recepcao do request----------------
-	
-		'''
-		application/x-www-form-urlencoded
-		multipart/form-data
-		text/plain
-		text/html; charset=utf-8
-		application/json
-		'''
+	'''
+	application/x-www-form-urlencoded
+	multipart/form-data
+	text/plain
+	text/html; charset=utf-8
+	application/json
+	'''
 
 	if request.headers["Content-Type"] == "application/x-www-form-urlencoded" :
 		name = request.form["name_user"]
@@ -122,8 +124,21 @@ def home():
 	
 	# ------------ Resposta --------------------------
 	return resposta
+
+@app.route("/products", methods=["GET"])
+def products():
+	with open(file="./img/products.txt", mode="r", encoding="utf-8") as file: 
+	# com 'with' abre e fecha o arquivo automaticamente(forma segura).
 	
+		#return json.dumps(file.read())
+		return file.read()
+	'''
+	file = open("./img/products.html", "r")
+	response = file.read()
+	file.close()
+	return response
+	'''
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000 , debug=True)  #
-	#app.run(host="127.0.0.1", port=5000 , debug=True)  #
+    app.run(host="0.0.0.0", port=5000 , debug=True)  # listen all ips
+	#app.run(host="127.0.0.1", port=5000 , debug=True)  # listen localhost

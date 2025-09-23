@@ -22,7 +22,7 @@ def start():
 
 	try:
 		
-		#if HOST != "127.0.0.1" and HOST != "localhost" :	--> não testeado.
+		#if HOST != "127.0.0.1" and HOST != "localhost" :	--> não testado.
 		if PWD != "/home/susan/Python/github_dir_local/Aprendendo_API_GITHUB":
 			mydb = mysql.connector.connect(
 				host = os.getenv("MYSQLHOST"),
