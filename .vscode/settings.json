@@ -1,0 +1,31 @@
+/*
+Fonte: https://dev.to/krtirtho/make-visual-studio-code-lighter-3end
+Como deixar seu cv code mais leve.
+*/
+
+//Add following lines of code to exclude the files & folders which aren't important for watchers to look for changes...
+{
+  //exludes files & folders in search indexing
+"search.exclude": {
+
+    //exemplo de sixtaxe.
+    // "**/node_modules": true,
+    // "**/bower_components": true,
+    // "**/env": true,
+    // "**/venv": true
+
+  },
+
+  //exludes files & folders for watcher service
+"files.watcherExclude": {
+        
+    //exemplo de sixtaxe.
+    // "**/.git/objects/**": true,
+    // "**/.git/subtree-cache/**": true,
+    // "**/node_modules/**": true,
+    // "**/env/**": true,
+    // "**/venv/**": true,
+    // "env-*": true
+
+  },
+}
