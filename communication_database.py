@@ -109,11 +109,11 @@ def add_user_test(user, command_x=None):
 	print(mycursor.rowcount, "Record Inserted.")
 	exit()
 
-def cadUser(name, password, command_x=None):
+def cadUser(name, password, tipo, command_x=None):
 	start()
 	command_extra(command_x)
 
-	user = User(name, password)
+	user = User(name, password, tipo)
 	sql = "INSERT INTO user(id, name, password, tipo) VALUES(%s, %s, %s, %s)"
 	values = (user.id, user.name, user.password, user.tipo)
 

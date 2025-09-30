@@ -215,8 +215,9 @@ def home():
 		case "2.1": #Cadastro de usuario.
 			name = arg1
 			password = arg2
+			tipo =arg3
 
-			r = CDB.cadUser(name, password)
+			r = CDB.cadUser(name, password, tipo)
 			if r :
 				resposta = "OK"
 
