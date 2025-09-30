@@ -1,10 +1,10 @@
 function feedbackClear(){
-	let feedback = window.document.getElementById("frm-user");
-	feedback.textContent = "";
-	let feedback = window.document.getElementById("frm-client");
-	feedback.textContent = "";
-	let feedback = window.document.getElementById("frm-product");
-	feedback.textContent = "";
+	let feedback_user = window.document.getElementById("frm-user");
+	feedback_user.textContent = "";
+	let feedback_client = window.document.getElementById("frm-client");
+	feedback_client.textContent = "";
+	let feedback_product = window.document.getElementById("frm-product");
+	feedback_product.textContent = "";
 }
 
 
@@ -27,7 +27,6 @@ function VMvalidateForm(event){
 		const password = form.input["name='password'"].value;
 		const type = form.input["name='type'"].value;
 		const op_type = form.input["name='op_type'"].value;
-		let feedback = window.document.getElementById("frm-user");
 
 
 		fetch(url, {
@@ -46,10 +45,10 @@ function VMvalidateForm(event){
 		.then(response => {
 			if(!response.ok){
 				window.alert("Resposta": response.text());
-				feedback.innerHTML = "O cadastro falhou tente novamente!"
+				feedback_user.innerHTML = "O cadastro falhou tente novamente!"
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
-				feedback.innerHTML = "O cadastro realizado com sucesso."
+				feedback_user.innerHTML = "O cadastro realizado com sucesso."
 			}
 
 			return response.text();  // ou response.json() se a resposta for JSON.
@@ -69,7 +68,6 @@ function VMvalidateForm(event){
 		const address = form.input["name='address'"].value;
 		const contact = form.input["name='contact'"].value;
 		const op_type = form.input["name='op_type'"].value;
-		let feedback = window.document.getElementById("frm-client");
 
 
 		fetch(url, {
@@ -88,10 +86,10 @@ function VMvalidateForm(event){
 		.then(response => {
 			if(!response.ok){
 				window.alert("Resposta": response.text());
-				feedback.innerHTML = "O cadastro falhou tente novamente!"
+				feedback_client.innerHTML = "O cadastro falhou tente novamente!"
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
-				feedback.innerHTML = "O cadastro realizado com sucesso."
+				feedback_client.innerHTML = "O cadastro realizado com sucesso."
 			}
 
 			return response.text();  // ou response.json() se a resposta for JSON.
@@ -111,7 +109,6 @@ function VMvalidateForm(event){
 		const address = form.input["name='category'"].value;
 		const contact = form.input["name='unit'"].value;
 		const op_type = form.input["name='op_type'"].value;
-		let feedback = window.document.getElementById("frm-product");
 
 
 		fetch(url, {
@@ -130,10 +127,10 @@ function VMvalidateForm(event){
 		.then(response => {
 			if(!response.ok){
 				window.alert("Resposta": response.text());
-				feedback.innerHTML = "O cadastro falhou tente novamente!"
+				feedback_product.innerHTML = "O cadastro falhou tente novamente!"
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
-				feedback.innerHTML = "O cadastro realizado com sucesso."
+				feedback_product.innerHTML = "O cadastro realizado com sucesso."
 			}
 
 			return response.text();  // ou response.json() se a resposta for JSON.
