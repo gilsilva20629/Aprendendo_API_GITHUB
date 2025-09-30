@@ -34,7 +34,7 @@ function VMvalidateForm(event){
 			header: {
 				"Acess-Control-Allow-Origin": "no-cors",
 				"Content-Type": "aplication/json"
-			}
+			},
 			body: JSON.stringify({
 				"arg1": user,
 				"arg2": password,
@@ -116,7 +116,7 @@ function VMvalidateForm(event){
 			header: {
 				"Acess-Control-Allow-Origin": "no-cors",
 				"Content-Type": "aplication/json"
-			}
+			},
 			body: JSON.stringify({
 				"arg1": product_name,
 				"arg2": category,
@@ -199,7 +199,7 @@ function validateForm(event){
 			header: {
 				"Acess-Control-Allow-Origin": "no-cors",
 				"Content-Type": "aplication/json"
-			}
+			},
 			body: JSON.stringify({
 				"arg1": user,
 				"arg2": password,
@@ -281,7 +281,7 @@ function validateForm(event){
 			header: {
 				"Acess-Control-Allow-Origin": "no-cors",
 				"Content-Type": "aplication/json"
-			}
+			},
 			body: JSON.stringify({
 				"arg1": product_name,
 				"arg2": category,

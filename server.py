@@ -124,7 +124,7 @@ def home():
 	return resposta
 
 @app.route("/cadastro", methods=['POST'])
-def home():
+def cadastro():
 
 	# ------------ Recepcao do request----------------
 	'''
