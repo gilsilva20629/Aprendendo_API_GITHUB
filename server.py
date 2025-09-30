@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
-import communication_database as CDB
+import com_db as CDB
 import user
 import teste
 import json

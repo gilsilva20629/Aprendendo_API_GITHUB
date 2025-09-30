@@ -57,7 +57,7 @@ function VMvalidateForm(event){
 			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
-				continue;
+				
 			}
 		})
 		.catch(error => {
@@ -99,7 +99,7 @@ function VMvalidateForm(event){
 			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
-				continue;
+				
 			}
 		})
 		.catch(error => {
@@ -141,7 +141,7 @@ function VMvalidateForm(event){
 			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
-				continue;
+				
 			}
 		})
 		.catch(error => {
@@ -225,7 +225,7 @@ function validateForm(event){
 			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
-				continue;
+				
 			}
 		})
 		.catch(error => {
@@ -267,7 +267,7 @@ function validateForm(event){
 			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
-				continue;
+				
 			}
 		})
 		.catch(error => {
@@ -309,7 +309,7 @@ function validateForm(event){
 			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
-				continue;
+				
 			}
 		})
 		.catch(error => {
