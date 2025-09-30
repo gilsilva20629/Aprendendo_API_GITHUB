@@ -75,7 +75,7 @@ function VMvalidateForm(event){
 			header: {
 				"Acess-Control-Allow-Origin": "no-cors",
 				"Content-Type": "aplication/json"
-			}
+			},
 			body: JSON.stringify({
 				"arg1": name,
 				"arg2": address,
@@ -192,7 +192,6 @@ function validateForm(event){
 		const password = form.input["name='password'"].value;
 		const type = form.input["name='type'"].value;
 		const op_type = form.input["name='op_type'"].value;
-		let feedback = window.document.getElementById("frm-user");
 
 
 		fetch(url, {
@@ -204,17 +203,17 @@ function validateForm(event){
 			body: JSON.stringify({
 				"arg1": user,
 				"arg2": password,
-				"arg3": type,
+				"arg3":type,
 				"arg4": op_type
 			})
 		})
 		.then(response => {
 			if(!response.ok){
 				window.alert("Resposta": response.text());
-				feedback.innerHTML = "O cadastro falhou tente novamente!"
+				feedback_user.innerHTML = "O cadastro falhou tente novamente!"
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
-				feedback.innerHTML = "O cadastro realizado com sucesso."
+				feedback_user.innerHTML = "O cadastro realizado com sucesso."
 			}
 
 			return response.text();  // ou response.json() se a resposta for JSON.
@@ -234,7 +233,6 @@ function validateForm(event){
 		const address = form.input["name='address'"].value;
 		const contact = form.input["name='contact'"].value;
 		const op_type = form.input["name='op_type'"].value;
-		let feedback = window.document.getElementById("frm-client");
 
 
 		fetch(url, {
@@ -242,7 +240,7 @@ function validateForm(event){
 			header: {
 				"Acess-Control-Allow-Origin": "no-cors",
 				"Content-Type": "aplication/json"
-			}
+			},
 			body: JSON.stringify({
 				"arg1": name,
 				"arg2": address,
@@ -253,10 +251,10 @@ function validateForm(event){
 		.then(response => {
 			if(!response.ok){
 				window.alert("Resposta": response.text());
-				feedback.innerHTML = "O cadastro falhou tente novamente!"
+				feedback_client.innerHTML = "O cadastro falhou tente novamente!"
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
-				feedback.innerHTML = "O cadastro realizado com sucesso."
+				feedback_client.innerHTML = "O cadastro realizado com sucesso."
 			}
 
 			return response.text();  // ou response.json() se a resposta for JSON.
@@ -276,7 +274,6 @@ function validateForm(event){
 		const address = form.input["name='category'"].value;
 		const contact = form.input["name='unit'"].value;
 		const op_type = form.input["name='op_type'"].value;
-		let feedback = window.document.getElementById("frm-product");
 
 
 		fetch(url, {
@@ -295,10 +292,10 @@ function validateForm(event){
 		.then(response => {
 			if(!response.ok){
 				window.alert("Resposta": response.text());
-				feedback.innerHTML = "O cadastro falhou tente novamente!"
+				feedback_product.innerHTML = "O cadastro falhou tente novamente!"
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
-				feedback.innerHTML = "O cadastro realizado com sucesso."
+				feedback_product.innerHTML = "O cadastro realizado com sucesso."
 			}
 
 			return response.text();  // ou response.json() se a resposta for JSON.
@@ -338,6 +335,7 @@ function validateForm(event){
 		}
 	};
 }; 
+
 
 // habilita para import via script type="module.
 export default validateForm;
