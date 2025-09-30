@@ -1,4 +1,4 @@
-function feedbackClear(){
+function feedbackClean(){
 	let feedback_user = window.document.getElementById("frm-user");
 	feedback_user.textContent = "";
 	let feedback_client = window.document.getElementById("frm-client");
@@ -7,6 +7,7 @@ function feedbackClear(){
 	feedback_product.textContent = "";
 }
 
+
 // javascript import falha caregado pelo protocolo file:// devido a CORS policy
 // javascript import falha caregado pelo protocolo file:// devido a CORS policy
 // javascript import falha caregado pelo protocolo file:// devido a CORS policy
@@ -14,9 +15,9 @@ function feedbackClear(){
 // javascript import falha caregado pelo protocolo file:// devido a CORS policy
 
 
-function validateForm(event){
+function VMvalidateForm(event){
 	event.preventDefault();	// Impede o envio imediato do formulário.
-	feedbackClear();
+	feedbackClean();
 	let form = event.target; // 'target' elemento que disparou o evento
 	console.log("Detalhes do evento: ", event, event.target, typeof event.target );
 	let url = "http://127.0.0.1:5000/cadastro";
@@ -79,7 +80,7 @@ function validateForm(event){
 			body: JSON.stringify({
 				"arg1": name,
 				"arg2": address,
-				"arg3":contact,
+				"arg3": contact,
 				"arg4": op_type
 			})
 		})
@@ -174,6 +175,7 @@ function validateForm(event){
 }; 
 
 
-// declaracao "export" habilita para import via <script type="module>.
-//export default validateForm;
+
+// habilita para import via script type="module.
+export default VMvalidateForm;
 //export default feedbackClear;

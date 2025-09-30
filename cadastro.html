@@ -4,7 +4,14 @@
 	<head>
 		<script src="./modulos/js/funcoesGerais.js">
 		// src atributo importa com escopo global sem a necessidade de type='module' e sem export na origem. 	
+		</script>
+			
+		<script type="module"> // import com escopo local necessário 'export' na origem.
+			import VMvalidateForm from "./modulos/js/func_export.js";
+			window.VMvalidateForm = VMvalidateForm; // tornando a função de local para global escopo.
+		</script>
 
+		<script>
 			let selected_option = "user";
 			const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
 			const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
@@ -60,14 +67,6 @@
 					}					
 				}
 			}
-
-		</script>
-			
-		<script type="module"> // import com escopo local necessário 'export' na origem.
-			// javascript  
-			import VMvalidateForm from "./modulos/js/funcoesGerais.js";
-
-			window.VMvalidateForm = VMvalidateForm; // tornando a função de local para global escopo.
 
 		</script>
 		
