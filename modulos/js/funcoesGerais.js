@@ -38,23 +38,23 @@ function VMvalidateForm(event){
 			body: JSON.stringify({
 				"arg1": user,
 				"arg2": password,
-				"arg3":type,
+				"arg3": type,
 				"arg4": op_type
 			})
 		})
 		.then(response => {
 			if(!response.ok){
-				window.alert("Resposta": response.text());
-				feedback_user.innerHTML = "O cadastro falhou tente novamente!"
+				window.alert(response.text());
+				feedback_user.innerHTML = "O cadastro falhou tente novamente!";
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
-				feedback_user.innerHTML = "O cadastro realizado com sucesso."
+				feedback_user.innerHTML = "O cadastro realizado com sucesso.";
 			}
 
 			return response.text();  // ou response.json() se a resposta for JSON.
 		})
 		.then(dados => {
-			window.alert("Resposta": dados);
+			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
 			}
@@ -79,13 +79,13 @@ function VMvalidateForm(event){
 			body: JSON.stringify({
 				"arg1": name,
 				"arg2": address,
-				"arg3":contact,
+				"arg3": contact,
 				"arg4": op_type
 			})
 		})
 		.then(response => {
 			if(!response.ok){
-				window.alert("Resposta": response.text());
+				window.alert(response.text());
 				feedback_client.innerHTML = "O cadastro falhou tente novamente!"
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
@@ -95,7 +95,7 @@ function VMvalidateForm(event){
 			return response.text();  // ou response.json() se a resposta for JSON.
 		})
 		.then(dados => {
-			window.alert("Resposta": dados);
+			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
 			}
@@ -126,7 +126,7 @@ function VMvalidateForm(event){
 		})
 		.then(response => {
 			if(!response.ok){
-				window.alert("Resposta": response.text());
+				window.alert(response.text());
 				feedback_product.innerHTML = "O cadastro falhou tente novamente!"
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
@@ -136,7 +136,7 @@ function VMvalidateForm(event){
 			return response.text();  // ou response.json() se a resposta for JSON.
 		})
 		.then(dados => {
-			window.alert("Resposta": dados);
+			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
 			}
@@ -203,23 +203,23 @@ function validateForm(event){
 			body: JSON.stringify({
 				"arg1": user,
 				"arg2": password,
-				"arg3":type,
+				"arg3": type,
 				"arg4": op_type
 			})
 		})
 		.then(response => {
 			if(!response.ok){
-				window.alert("Resposta": response.text());
-				feedback_user.innerHTML = "O cadastro falhou tente novamente!"
+				window.alert(response.text());
+				feedback_user.innerHTML = "O cadastro falhou tente novamente!";
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
-				feedback_user.innerHTML = "O cadastro realizado com sucesso."
+				feedback_user.innerHTML = "O cadastro realizado com sucesso.";
 			}
 
 			return response.text();  // ou response.json() se a resposta for JSON.
 		})
 		.then(dados => {
-			window.alert("Resposta": dados);
+			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
 			}
@@ -250,7 +250,7 @@ function validateForm(event){
 		})
 		.then(response => {
 			if(!response.ok){
-				window.alert("Resposta": response.text());
+				window.alert(response.text());
 				feedback_client.innerHTML = "O cadastro falhou tente novamente!"
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
@@ -260,7 +260,7 @@ function validateForm(event){
 			return response.text();  // ou response.json() se a resposta for JSON.
 		})
 		.then(dados => {
-			window.alert("Resposta": dados);
+			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
 			}
@@ -291,7 +291,7 @@ function validateForm(event){
 		})
 		.then(response => {
 			if(!response.ok){
-				window.alert("Resposta": response.text());
+				window.alert(response.text());
 				feedback_product.innerHTML = "O cadastro falhou tente novamente!"
 				throw new Error('RESPOSTA_REDE: Falhou.');
 			}else{
@@ -301,7 +301,7 @@ function validateForm(event){
 			return response.text();  // ou response.json() se a resposta for JSON.
 		})
 		.then(dados => {
-			window.alert("Resposta": dados);
+			window.alert(dados);
 			if(dados == "OK"){
 				// Fazer algo!
 			}
