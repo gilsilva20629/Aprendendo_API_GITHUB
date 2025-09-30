@@ -32,7 +32,7 @@
 				//document.getElementById("form1").submit();	//manda requisicao sem capturar retorno
 				
 				//fetch("https://aprendendoapigithub-production.up.railway.app/my_endpoint", {
-				fetch("http://127.0.0.1:5000/my_endpoint", {	// localhost teste
+				fetch("http://127.0.0.1:5000/login", {	// localhost teste
 
 					method: 'POST',
                 	headers: {
@@ -47,7 +47,7 @@
 				})
 				.then(response => {
 					if (!response.ok){
-						throw new Error('Network response was not ok');
+						throw new Error('RESPOSTA_REDE: Falhou.');
 					}
 					return response.text();  // ou response.json() se a resposta for JSON
 				})
@@ -131,6 +131,7 @@
 	-->	
 		<!-- texto exibido quando o javascript não puder ser carregado -->
 		<noscript> Sorry, your browser does not support JavaScript! </noscript>
+		<br>
 		<br>
 		<a href="https://otreblig.w3spaces.com/oauth2_teste.html" target="_blank">oauth2</a>
 		

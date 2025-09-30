@@ -1,6 +1,7 @@
 import mysql.connector
-import os
+import os                #usada para ppegar as variaveis de ambiente.
 import hashlib
+import user
 
 def start():
 
@@ -92,12 +93,12 @@ def command_extra(command=None):
 		except Exception as err:
 			print("command extra falhou!")	
 
-def add_user(user, command_x=None):
+def add_user_test(user, command_x=None):
 	start()
 
 	command_extra(command_x)
 
-	sql = "INSERT INTO user(id, name, password, tipo) VALUES(%s, %s, %s, %s)"
+	sql = "INSERT INTO user(id, name, password, tipo) VALUES(%s, %s, %s)"
 	values = (user.id, user.name, user.password, user.tipo)
 
 	#sql = "INSERT INTO user(id, name, password, `tipo`) VALUES(%s, %s, %s, %s)"
@@ -106,6 +107,19 @@ def add_user(user, command_x=None):
 	mycursor.execute(sql, values)
 	mydb.commit()
 	print(mycursor.rowcount, "Record Inserted.")
+	exit()
+
+def cadUser(name, password, command_x=None):
+	start()
+	command_extra(command_x)
+
+	user = User(name, password)
+	sql = "INSERT INTO user(id, name, password, tipo) VALUES(%s, %s, %s, %s)"
+	values = (user.id, user.name, user.password, user.tipo)
+
+	mycursor.execute(sql, values)
+	mydb.commit()
+	print(mycursor.rowcount, "Record Inserted")
 	exit()
 
 def search_user(name=None, user_id=None, tipo=None, command_x=None):
@@ -196,4 +210,5 @@ def login(name, password, command_x=None):
 			else:
 				exit()
 				return False
-		
+
+

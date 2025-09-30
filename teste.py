@@ -15,8 +15,8 @@ def teste_subprocess():
 
 
 def teste_user():
-	from cad_user import user
-	from database import communication_database as CDB
+	import user
+	import communication_database as CDB
 	
 	for i in range(10):
 		name, password, tipo = user.genarate_info_user()
@@ -103,7 +103,7 @@ def outhers():
 
 
 	for i in range(10):
-		name, password, tipo = user.genarate_info_user()
+		name, password, tipo = user.genarate_info_user_test()
 		u = user.User(name,password, tipo)
 		#response = CDB.add_user(u, cmd_x)	# funcao com comando extra.
 		response = CDB.add_user(u)

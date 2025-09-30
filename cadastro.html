@@ -2,13 +2,14 @@
 
 <html>
 	<head>
-		<script>
+		<script src="./modulos/js/funcoesGerais.js">
 			let selected_option = "user";
 			const elements_Cad_Client = window.document.getElementsByClassName("Cad-Client");
 			const elements_Cad_Product = window.document.getElementsByClassName("Cad-Product");
 			const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
 
 			function setOption(value){
+				feedbackClear();
 				selected_option = this.value; // 'this' refere-se ao elemento no caso o 'select' que disparou o evento
 				//console.log(selected_option);
 				disableElement();
@@ -65,10 +66,11 @@
 			import VMvalidateForm from "./modulos/js/funcoesGerais.js";
 
 			window.VMvalidateForm = VMvalidateForm; // tornando a função de local  para global escopo.
-			
+
 		</script>
 
-		<script src="./test.js"> 
+		<script src="./modulos/js/funcoesGerais.js"> 
+			// function validateForm(event) com escopo global.
 			// src atributo importa com escopo global sem a necessidade de type='module' e sem export na origem. 	
 		</script>
 		
@@ -114,6 +116,7 @@
 	<body>
 		<h1>CADASTROS GERAIS DO SISTEMA</h1>
 		<br>
+		<a href="https://gilsilva20629.github.io/Aprendendo_API_GITHUB/" target="_blank">login</a>
 
 		<div>
 			<p>Tipo de Cadastro:</p>
@@ -203,7 +206,8 @@
 				<input type="hidden" name="op_type" value="2.1"> <br>
 
 				<br>
-				<input class="Cad-User" type="submit" value="Submit Form">	
+				<input class="Cad-User" type="submit" value="Submit Form">
+				<p id="frm-user" style="color: 1px solid red;"></p>
 			</form>
 		</div>
 
@@ -232,7 +236,8 @@
 				<input type="hidden" name="op_type" value="2.2"> <br>
 
 				<br>
-				<input class="Cad-Client" type="submit" value="Submit Form">	
+				<input class="Cad-Client" type="submit" value="Submit Form">
+				<p id="frm-client" style="color: 1px solid red;"></p>	
 			</form>
 		</div>
 
@@ -274,7 +279,8 @@
 				<input class="Cad-Product" type="text" id="unit" name="unit" value="" required disabled> <br>
 				<input type="hidden" name="op_type" value="2.3">
 				<br>
-				<input class="Cad-Product" type="submit" value="submit form">	
+				<input class="Cad-Product" type="submit" value="submit form">
+				<p id="frm-product" style="color: 1px solid red;"></p>
 			</form>
 		</div>
 	</body>
