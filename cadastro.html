@@ -66,19 +66,15 @@
 
 			window.VMvalidateForm = VMvalidateForm; // tornando a função de local  para global escopo.
 			
-			/*
-				Comentario
-				multi linha
-				javascript
-			*/
 		</script>
 
 		<script src="./test.js"> 
-			// src atributo importa com escopo global sem a necessidade de type='mudule' e sem export na origem. 	
+			// src atributo importa com escopo global sem a necessidade de type='module' e sem export na origem. 	
 		</script>
 		
 		<style>
-			/*<link rel="stylesheet" href="styles.css">
+			/*
+			<link rel="stylesheet" href="styles.css">
 		
 			CSS can be added to HTML documents in 3 ways:
 
@@ -228,11 +224,11 @@
 			-->	
 			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" target="_blank" name="form-client" id="form-client" onsubmit="validateForm(event)">
 				<label>Nome</label> <br>
-				<input class="Cad-Client" type="text" name="client" id="client" value="" required> <br>
+				<input class="Cad-Client" type="text" name="client" id="client" value="" required disabled> <br>
 				<label>Endereço</label> <br>
-				<input class="Cad-Client" type="text" name="address" id="address" value="" required> <br>
+				<input class="Cad-Client" type="text" name="address" id="address" value="" required disabled> <br>
 				<label>Contato</label> <br>
-				<input class="Cad-Client" type="text" name="contact" id="contact" value=""> <br>
+				<input class="Cad-Client" type="text" name="contact" id="contact" value="" required disabled> <br>
 				<input type="hidden" name="op_type" value="2.2"> <br>
 
 				<br>
@@ -271,11 +267,11 @@
 				-->
 
 				<label>Product Name</label> <br>
-				<input class="Cad-Product" type="text" id="produto-name" name="produto-name" value="" required> <br>
+				<input class="Cad-Product" type="text" id="produto-name" name="produto-name" value="" required disabled> <br>
 				<label>Category</label> <br>
-				<input class="Cad-Product" type="text" id="category" name="category" value="" required> <br>
-				<label>unit</label> <br>
-				<input class="Cad-Product" type="text" id="unit" name="unit" value="" required> <br>
+				<input class="Cad-Product" type="text" id="category" name="category" value="" required disabled> <br>
+				<label>Unit</label> <br>
+				<input class="Cad-Product" type="text" id="unit" name="unit" value="" required disabled> <br>
 				<input type="hidden" name="op_type" value="2.3">
 				<br>
 				<input class="Cad-Product" type="submit" value="submit form">	

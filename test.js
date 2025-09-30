@@ -1,7 +1,14 @@
+// javascript import falha caregado pelo protocolo file:// devido a CORS policy
+// javascript import falha caregado pelo protocolo file:// devido a CORS policy
+// javascript import falha caregado pelo protocolo file:// devido a CORS policy
+// javascript import falha caregado pelo protocolo file:// devido a CORS policy
+// javascript import falha caregado pelo protocolo file:// devido a CORS policy
+
+
 function validateForm(event){
 	event.preventDefault();	// Impede o envio imediato do formulário.
 	let form = event.target; // 'target' elemento que disparou o evento
-	console.log(event , event.target, typeof event.target )
+	console.log(event, event.target, typeof event.target );
 	
 	/*
 	A TRY declaração define um bloco de código a ser executado (para tentar).
@@ -28,5 +35,3 @@ function validateForm(event){
 };
 
 //export default validateForm;
-
-//window.document.getElementById("")
