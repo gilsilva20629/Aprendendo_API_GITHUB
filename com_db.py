@@ -93,6 +93,8 @@ def command_extra(command=None):
 		except Exception as err:
 			print("command extra falhou!")	
 
+''' Deprecated (usar somente para testes
+
 def add_user_test(user, command_x=None):
 	start()
 
@@ -108,19 +110,26 @@ def add_user_test(user, command_x=None):
 	mydb.commit()
 	print(mycursor.rowcount, "Record Inserted.")
 	exit()
+'''
 
 def cadUser(name, password, tipo, command_x=None):
-	start()
-	command_extra(command_x)
+	try:
+		start()
+		command_extra(command_x)
 
-	user = User(name, password, tipo)
-	sql = "INSERT INTO user(id, name, password, tipo) VALUES(%s, %s, %s, %s)"
-	values = (user.id, user.name, user.password, user.tipo)
+		usuario = user.User(name, password, tipo)
+		sql = "INSERT INTO user(id, name, password, tipo) VALUES(%s, %s, %s, %s)"
+		values = (usuario.id, usuario.name, usuario.password, usuario.tipo)
 
-	mycursor.execute(sql, values)
-	mydb.commit()
-	print(mycursor.rowcount, "Record Inserted")
-	exit()
+		mycursor.execute(sql, values)
+		mydb.commit()
+		print(mycursor.rowcount, "Record Inserted")
+		exit()
+		return True
+
+	except Exception as error:
+		print(error, type(error))
+		return False
 
 def search_user(name=None, user_id=None, tipo=None, command_x=None):
 	start()

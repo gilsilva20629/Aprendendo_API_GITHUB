@@ -44,7 +44,7 @@ def home():
 	else:
 		resposta = "content/media type do not supported: "+request.headers["Content-Type"]
 		print(resposta)
-
+		return resposta
 	# ------------ Executar Testes --------------------
 
 	#print(request.json)
@@ -140,28 +140,33 @@ def cadastro():
 		arg2 = request.form["arg2"]
 		arg3 = request.form["arg3"]
 		arg4 = request.form["arg4"]
+		op_type = arg4
+		resposta = "OK"
 
-	elif request.headers["Content-Type"] == "text/html; charset=utf-8" :
+	elif request.headers["Content-Type"] == "text/html;charset=utf-8" :
 		arg1 = request.form.get("arg1")
 		arg2 = request.form.get("arg2")
 		arg3 = request.form.get("arg3")
 		arg4 = request.form.get("arg4")
+		op_type = arg4
+		resposta = "OK"
 
-	elif request.headers["Content-Type"] == "application/json ; charset=utf-8" :
+	elif request.headers["Content-Type"] == "application/json" :
 		arg1 = request.json.get("arg1")
 		arg2 = request.json.get("arg2")
 		arg3 = request.json.get("arg3")
 		arg4 = request.json.get("arg4")
+		op_type = arg4
+		resposta = "OK"
 
-	elif request.headers["Content-Type"] == "text/plain; charset=utf-8" :
-		arg1 = request.text.get("arg1")
-		arg2 = request.text.get("arg2")
-		arg3 = request.text.get("arg3")
-		arg4 = request.text.get("arg4")
-
+	elif request.headers["Content-Type"] == "text/plain;charset=UTF-8" :
+		text = request.data.decode("utf-8")
+		print("Formato text/plain: ", text)
+		resposta = "content/media type do not supported: "+request.headers["Content-Type"]
 	else:
 		resposta = "content/media type do not supported: "+request.headers["Content-Type"]
-		print(resposta)
+		#print(resposta)
+		
 
 	# ------------ Executar Testes --------------------
 
@@ -180,7 +185,7 @@ def cadastro():
 	print(request.data)
 	print(request.content)
 	print(request.json)
-	print(request.text)
+	print(request.text)	X  Invalido!
 	print(request.auth)
 	print(request.cookies)
 	print(request.timeuot)
@@ -209,41 +214,42 @@ def cadastro():
 	else:
 		pass
 	'''
-	
-	match op_type:
+	if resposta == "OK":
+		match op_type:
 
-		case "2.1": #Cadastro de usuario.
-			name = arg1
-			password = arg2
-			tipo =arg3
+			case "2.1": #Cadastro de usuario.
+				name = arg1
+				password = arg2
+				tipo =arg3
 
-			r = CDB.cadUser(name, password, tipo)
-			if r :
-				resposta = "OK"
+				r = CDB.cadUser(name, password, tipo)
+				if r :
+					resposta = "OK"
 
-		case "2.2": # cadastro de cliente.
-			name = arg1
-			address = arg2
-			contact = arg3
+			case "2.2": # cadastro de cliente.
+				name = arg1
+				address = arg2
+				contact = arg3
 
-			r = CDB.cadClient(name, address, contact)
-			if r :
-				resposta = "OK"
+				r = CDB.cadClient(name, address, contact)
+				if r :
+					resposta = "OK"
 
-		case "2.3":
-			product_name = arg1
-			category = arg2
-			unit = arg3
+			case "2.3":
+				product_name = arg1
+				category = arg2
+				unit = arg3
 
-			r = CDB.cadProduct(product_name, category, unit)
-			if r :
-				resposta = "OK"
+				r = CDB.cadProduct(product_name, category, unit)
+				if r :
+					resposta = "OK"
 
-		case "_":
-				resposta = "NOK"
+			case "_":
+					resposta = "op_type {op_type} invalid!"	
 
-	return resposta
-
+		return resposta
+	else:
+		return "NOK"
 
 @app.route("/products", methods=["GET"])
 def products():

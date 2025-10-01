@@ -2,13 +2,10 @@
 
 <html>
 	<head>
-		<script src="./modulos/js/funcoesGerais.js">
-		// src atributo importa com escopo global sem a necessidade de type='module' e sem export na origem. 	
-		</script>
 			
 		<script type="module"> // import com escopo local necessário 'export' na origem.
-			import VMvalidateForm from "./modulos/js/func_export.js";
-			window.VMvalidateForm = VMvalidateForm; // tornando a função de local para global escopo.
+			import validateForm from "./modulos/js/funcoesGerais.js";
+			window.validateForm = validateForm; // tornando a função de local para global escopo.
 		</script>
 
 		<script>
@@ -67,7 +64,6 @@
 					}					
 				}
 			}
-
 		</script>
 		
 		<style>
@@ -192,14 +188,14 @@
 				accept-charset	Especifica quais conjuntos de caracteres são aceitos ao enviar o formulário.
 				onsubmit		chama função ao submeter formulario.
 			-->	
-			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" target="_blank" name="form-user" id="form-user" onsubmit="validateForm(event)">
+			<form action="http://127.0.0.1:5000/cadastro" method="POST" target="_blank" name="form-user" id="form-user" onsubmit="window.validateForm(event)">
 				<label>User</label> <br>
 				<input class="Cad-User" type="text" name="user" id="user" value="" required> <br>
 				<label>Password</label> <br>
 				<input class="Cad-User" type="text" name="password" id="password" value="" required> <br>
 				<label>Type</label> <br>
 				<input class="Cad-User" type="text" name="type" id="type" value="" required> <br>
-				<input type="hidden" name="op_type" value="2.1"> <br>
+				<input type="hidden" name="op_type_user" id="op_type_user" value="2.1"> <br>
 
 				<br>
 				<input class="Cad-User" type="submit" value="Submit Form">
@@ -222,14 +218,14 @@
 				accept-charset	Especifica quais conjuntos de caracteres são aceitos ao enviar o formulário.
 				onsubmit		chama função ao submeter formulario.
 			-->	
-			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" target="_blank" name="form-client" id="form-client" onsubmit="validateForm(event)">
+			<form action="http://127.0.0.1:5000/cadastro" method="POST" target="_blank" name="form-client" id="form-client" onsubmit="window.validateForm(event)">
 				<label>Nome</label> <br>
 				<input class="Cad-Client" type="text" name="client" id="client" value="" required disabled> <br>
 				<label>Endereço</label> <br>
 				<input class="Cad-Client" type="text" name="address" id="address" value="" required disabled> <br>
 				<label>Contato</label> <br>
 				<input class="Cad-Client" type="text" name="contact" id="contact" value="" required disabled> <br>
-				<input type="hidden" name="op_type" value="2.2"> <br>
+				<input type="hidden" name="op_type_client" id="op_type_client" value="2.2"> <br>
 
 				<br>
 				<input class="Cad-Client" type="submit" value="Submit Form">
@@ -237,10 +233,9 @@
 			</form>
 		</div>
 
-		<p style="color: blue; background-color: yellow">Cadastro de Produtos</p>
+		<p style="color: blue; background-color: yellow;">Cadastro de Produtos</p>
 		<div>
-			<form action="http://127.0.0.1:5000/my_endpoint" method="POST" target="_blank" name="form-product" 
-			id="form-product" onsubmit="window.VMvalidateForm(event)">
+			<form action="http://127.0.0.1:5000/cadastro" method="POST" target="_blank" name="form-product" id="form-product" onsubmit="window.validateForm(event)">
 
 				<!-- input types:
 					<input type="button">
@@ -273,7 +268,7 @@
 				<input class="Cad-Product" type="text" id="category" name="category" value="" required disabled> <br>
 				<label>Unit</label> <br>
 				<input class="Cad-Product" type="text" id="unit" name="unit" value="" required disabled> <br>
-				<input type="hidden" name="op_type" value="2.3">
+				<input type="hidden" name="op_type_product" id="op_type_product" value="2.3">
 				<br>
 				<input class="Cad-Product" type="submit" value="submit form">
 				<p id="frm-product" style="color: 1px solid red;"></p>

@@ -1,9 +1,9 @@
 function feedbackClear(){
 	let feedback_user = window.document.getElementById("frm-user");
-	feedback_user.textContent = "";
 	let feedback_client = window.document.getElementById("frm-client");
-	feedback_client.textContent = "";
 	let feedback_product = window.document.getElementById("frm-product");
+	feedback_user.textContent = "";
+	feedback_client.textContent = "";
 	feedback_product.textContent = "";
 }
 
@@ -18,36 +18,35 @@ function validateForm(event){
 	event.preventDefault();	// Impede o envio imediato do formulário.
 	feedbackClear();
 	let form = event.target; // 'target' elemento que disparou o evento
-	console.log("Detalhes do evento: ", event, event.target, typeof event.target );
+	//console.log("Detalhes do evento: ", event, event.target);
 	let url = "http://127.0.0.1:5000/cadastro";
+	let feedback_user = window.document.getElementById("frm-user");
+	let feedback_client = window.document.getElementById("frm-client");
+	let feedback_product = window.document.getElementById("frm-product");
 
 	if (form.name == "form-user") {
-		const user = form.input["name='user'"].value;
-		const password = form.input["name='password'"].value;
-		const type = form.input["name='type'"].value;
-		const op_type = form.input["name='op_type'"].value;
-
+		const user = window.document.getElementById("user").value;
+		const password = window.document.getElementById("password").value;
+		const tipo = window.document.getElementById("type").value;
+		const op_type = window.document.getElementById("op_type_user").value;
 
 		fetch(url, {
 			method: "POST",
-			header: {
-				"Acess-Control-Allow-Origin": "no-cors",
-				"Content-Type": "aplication/json"
+			headers: {
+				"Access-Control-Allow-Origin": "no-cors",
+				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
 				"arg1": user,
 				"arg2": password,
-				"arg3": type,
+				"arg3": tipo,
 				"arg4": op_type
 			})
 		})
 		.then(response => {
 			if(!response.ok){
 				window.alert(response.text());
-				feedback_user.innerHTML = "O cadastro falhou tente novamente!";
-				throw new Error('RESPOSTA_REDE: Falhou.');
-			}else{
-				feedback_user.innerHTML = "O cadastro realizado com sucesso.";
+				throw new Error('Netwok: A resposta da rede não foi boa.');
 			}
 
 			return response.text();  // ou response.json() se a resposta for JSON.
@@ -55,8 +54,7 @@ function validateForm(event){
 		.then(dados => {
 			window.alert(dados);
 			if(dados == "OK"){
-				// Fazer algo!
-				
+				feedback_product.innerHTML = "O cadastro realizado com sucesso.";				
 			}
 		})
 		.catch(error => {
@@ -64,17 +62,16 @@ function validateForm(event){
 		});
 
 	} else if (form.name == "form-client") {
-		const name = form.input["name='nome'"].value;
-		const address = form.input["name='address'"].value;
-		const contact = form.input["name='contact'"].value;
-		const op_type = form.input["name='op_type'"].value;
-
+		const name = window.document.getElementById("name").value;
+		const address = window.document.getElementById("address").value;
+		const contact = window.document.getElementById("contact").value;
+		const op_type = window.document.getElementById("op_type_client").value;
 
 		fetch(url, {
 			method: "POST",
-			header: {
-				"Acess-Control-Allow-Origin": "no-cors",
-				"Content-Type": "aplication/json"
+			headers: {
+				"Access-Control-Allow-Origin": "no-cors",
+				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
 				"arg1": name,
@@ -86,19 +83,14 @@ function validateForm(event){
 		.then(response => {
 			if(!response.ok){
 				window.alert(response.text());
-				feedback_client.innerHTML = "O cadastro falhou tente novamente!"
-				throw new Error('RESPOSTA_REDE: Falhou.');
-			}else{
-				feedback_client.innerHTML = "O cadastro realizado com sucesso."
+				throw new Error('Netwok: A resposta da rede não foi boa.');
 			}
-
 			return response.text();  // ou response.json() se a resposta for JSON.
 		})
 		.then(dados => {
 			window.alert(dados);
 			if(dados == "OK"){
-				// Fazer algo!
-				
+				feedback_product.innerHTML = "O cadastro realizado com sucesso.";
 			}
 		})
 		.catch(error => {
@@ -106,17 +98,16 @@ function validateForm(event){
 		});
 
 	}else if(form.name == "form-product"){
-		const product_name = form.input["name='product-name'"].value;
-		const address = form.input["name='category'"].value;
-		const contact = form.input["name='unit'"].value;
-		const op_type = form.input["name='op_type'"].value;
-
+		const product_name = window.document.getElementById("product_name").value;
+		const category = window.document.getElementById("category").value;
+		const unit = window.document.getElementById("unit").value;
+		const op_type = window.document.getElementById("op_type_produtc").value;
 
 		fetch(url, {
 			method: "POST",
-			header: {
-				"Acess-Control-Allow-Origin": "no-cors",
-				"Content-Type": "aplication/json"
+			headers: {
+				"Access-Control-Allow-Origin": "no-cors",
+				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
 				"arg1": product_name,
@@ -129,9 +120,7 @@ function validateForm(event){
 			if(!response.ok){
 				window.alert(response.text());
 				feedback_product.innerHTML = "O cadastro falhou tente novamente!"
-				throw new Error('RESPOSTA_REDE: Falhou.');
-			}else{
-				feedback_product.innerHTML = "O cadastro realizado com sucesso."
+				throw new Error('Netwok: A resposta da rede não foi boa.');
 			}
 
 			return response.text();  // ou response.json() se a resposta for JSON.
@@ -139,7 +128,7 @@ function validateForm(event){
 		.then(dados => {
 			window.alert(dados);
 			if(dados == "OK"){
-				// Fazer algo!
+				feedback_product.innerHTML = "O cadastro realizado com sucesso.";
 				
 			}
 		})
@@ -157,7 +146,7 @@ function validateForm(event){
 		A FINALLY instrução define um bloco de código a ser executado independentemente do resultado.
 
 		A THROW declaração define um erro personalizado.
-		*/
+		
 
 		try{	
 			console.log("Nome do formulario", form.name);
@@ -170,10 +159,11 @@ function validateForm(event){
 
 			// throw new Error("Esse e um erro que eu criei agora")
 		}
+		*/
 	};
-}; 
+}
 
 
 // declaracao "export" habilita para import via <script type="module>.
-//export default validateForm;
-//export default feedbackClear;
+export default validateForm;
+
