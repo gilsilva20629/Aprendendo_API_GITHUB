@@ -34,6 +34,7 @@ function validateForm(event){
 			method: "POST",
 			headers: {
 				"Access-Control-Allow-Origin": "no-cors",
+				// "Access-Control-Allow-Origin": "*", // Use '*' para permitir todas as origens, se necessário
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
@@ -54,7 +55,7 @@ function validateForm(event){
 		.then(dados => {
 			window.alert(dados);
 			if(dados == "OK"){
-				feedback_product.innerHTML = "O cadastro realizado com sucesso.";				
+				feedback_user.innerHTML = "O cadastro realizado com sucesso.";				
 			}
 		})
 		.catch(error => {
@@ -71,6 +72,7 @@ function validateForm(event){
 			method: "POST",
 			headers: {
 				"Access-Control-Allow-Origin": "no-cors",
+        		// "Access-Control-Allow-Origin": "*", // Use '*' para permitir todas as origens, se necessário
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
@@ -90,7 +92,7 @@ function validateForm(event){
 		.then(dados => {
 			window.alert(dados);
 			if(dados == "OK"){
-				feedback_product.innerHTML = "O cadastro realizado com sucesso.";
+				feedback_client.innerHTML = "O cadastro realizado com sucesso.";
 			}
 		})
 		.catch(error => {
@@ -107,6 +109,7 @@ function validateForm(event){
 			method: "POST",
 			headers: {
 				"Access-Control-Allow-Origin": "no-cors",
+				// "Access-Control-Allow-Origin": "*", // Use '*' para permitir todas as origens, se necessário
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
