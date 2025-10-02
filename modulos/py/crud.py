@@ -184,7 +184,7 @@ def cadClient(name, address, contact):
 
 		mycursor.execute(sql, values)
 		mydb.commit()
-		print(mycursor.lastrowid, mycursor.rowcount,  "Record Inserted")
+		print("Reg. n°: ", mycursor.lastrowid, mycursor.rowcount,  "Record Inserted")
 		print("fetch: ", mycursor.fetchall(), len(mycursor.fetchall()), type(mycursor.fetchall()))
 		# fetchone(), fectchmany(size), fetchall()
 		''' 
@@ -205,10 +205,10 @@ def cadProduct(name: str, category: str, unit: str)-> bool:
 	try:
 		produto = Product(name, category, unit)
 		sql = "INSERT INTO product(id, name, category, unit) VALUES(%s, %s, %s, %s)"
-		values = (produt.id, produto.name, produto.category, produto.unit)
+		values = (produto.id, produto.name, produto.category, produto.unit)
 		mycursor.execute(sql,values)
 		mydb.commit()
-		print(mycursor.lastrowid, mycursor.rowcount,  "Record Inserted")
+		print("Reg. n°: ", mycursor.lastrowid, mycursor.rowcount,  "Record Inserted")
 		print("fetch: ", mycursor.fetchall(), len(mycursor.fetchall()), type(mycursor.fetchall()))
 		# fetchone(), fectchmany(size), fetchall()
 		''' 
@@ -222,7 +222,7 @@ def cadProduct(name: str, category: str, unit: str)-> bool:
 	except Exception as error:
 		print("query falhou!", error, type(error))
 		return False
-		
+
 def search_user(name=None, user_id=None, tipo=None, command_x=None):
 	start()
 	#command_extra(command_x)
