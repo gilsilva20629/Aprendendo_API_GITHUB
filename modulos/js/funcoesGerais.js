@@ -1,4 +1,4 @@
-function feedbackClear(){
+export function feedbackClear(){
 	let feedback_user = window.document.getElementById("frm-user");
 	let feedback_client = window.document.getElementById("frm-client");
 	let feedback_product = window.document.getElementById("frm-product");
@@ -46,7 +46,6 @@ function validateForm(event){
 		})
 		.then(response => {
 			if(!response.ok){
-				window.alert(response.text());
 				throw new Error('Netwok: A resposta da rede não foi boa.');
 			}
 
@@ -63,7 +62,7 @@ function validateForm(event){
 		});
 
 	} else if (form.name == "form-client") {
-		const name = window.document.getElementById("name").value;
+		const name = window.document.getElementById("client").value;
 		const address = window.document.getElementById("address").value;
 		const contact = window.document.getElementById("contact").value;
 		const op_type = window.document.getElementById("op_type_client").value;
@@ -84,7 +83,6 @@ function validateForm(event){
 		})
 		.then(response => {
 			if(!response.ok){
-				window.alert(response.text());
 				throw new Error('Netwok: A resposta da rede não foi boa.');
 			}
 			return response.text();  // ou response.json() se a resposta for JSON.
@@ -103,7 +101,7 @@ function validateForm(event){
 		const product_name = window.document.getElementById("product_name").value;
 		const category = window.document.getElementById("category").value;
 		const unit = window.document.getElementById("unit").value;
-		const op_type = window.document.getElementById("op_type_produtc").value;
+		const op_type = window.document.getElementById("op_type_product").value;
 
 		fetch(url, {
 			method: "POST",
@@ -120,9 +118,7 @@ function validateForm(event){
 			})
 		})
 		.then(response => {
-			if(!response.ok){
-				window.alert(response.text());
-				feedback_product.innerHTML = "O cadastro falhou tente novamente!"
+			if(!response.ok){ 
 				throw new Error('Netwok: A resposta da rede não foi boa.');
 			}
 
@@ -168,5 +164,6 @@ function validateForm(event){
 
 
 // declaracao "export" habilita para import via <script type="module>.
+//você não pode usar a palavra-chave default mais de uma vez em um único módulo.
 export default validateForm;
 

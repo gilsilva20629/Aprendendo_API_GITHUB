@@ -4,8 +4,12 @@
 	<head>
 			
 		<script type="module"> // import com escopo local necessário 'export' na origem.
-			import validateForm from "./modulos/js/funcoesGerais.js";
-			window.validateForm = validateForm; // tornando a função de local para global escopo.
+			import validateForm, {feedbackClear} from "./modulos/js/funcoesGerais.js";
+			
+			// "window" tornando a função de local para global escopo.
+			window.validateForm = validateForm; 
+			window.feedbackClear = feedbackClear;
+
 		</script>
 
 		<script>
@@ -15,7 +19,7 @@
 			const elements_Cad_User = window.document.getElementsByClassName("Cad-User");
 
 			function setOption(value){
-				feedbackClear();
+				window.feedbackClear();
 				selected_option = this.value; // 'this' refere-se ao elemento no caso o 'select' que disparou o evento
 				//console.log(selected_option);
 				disableElement();
@@ -263,7 +267,7 @@
 				-->
 
 				<label>Product Name</label> <br>
-				<input class="Cad-Product" type="text" id="produto-name" name="produto-name" value="" required disabled> <br>
+				<input class="Cad-Product" type="text" id="product_name" name="product_name" value="" required disabled> <br>
 				<label>Category</label> <br>
 				<input class="Cad-Product" type="text" id="category" name="category" value="" required disabled> <br>
 				<label>Unit</label> <br>

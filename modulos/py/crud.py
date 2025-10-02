@@ -1,7 +1,7 @@
 import mysql.connector
 import os                #usada para ppegar as variaveis de ambiente.
 import hashlib
-import user
+from modulos.py.person import User, Client, Product
 
 def start():
 
@@ -111,29 +111,121 @@ def add_user_test(user, command_x=None):
 	print(mycursor.rowcount, "Record Inserted.")
 	exit()
 '''
+def login(name:  str, password: str, command_x=None)-> bool:
+	start()
+	#command_extra(command_x)
 
-def cadUser(name, password, tipo, command_x=None):
+	results = search_user(name)[0]
+
+	for r in results:
+		if name in r:
+
+			#gerar hash do password
+			#h = hashlib.sha256()
+			#h.update(password.encoded())
+			#h.hexdigest()
+
+			if password == (r[2])[0:16] :
+				exit()
+				return True
+			else:
+				exit()
+				return False
+
+
+
+def cadUser(name: str, password: str, tipo: str, command_x=None)-> bool:
 	try:
 		start()
-		command_extra(command_x)
+		#command_extra(command_x)
 
-		usuario = user.User(name, password, tipo)
+		usuario = User(name, password, tipo)
 		sql = "INSERT INTO user(id, name, password, tipo) VALUES(%s, %s, %s, %s)"
 		values = (usuario.id, usuario.name, usuario.password, usuario.tipo)
 
 		mycursor.execute(sql, values)
 		mydb.commit()
-		print(mycursor.rowcount, "Record Inserted")
+		print(mycursor.lastrowid, mycursor.rowcount,  "Record Inserted")
+		print("fetch: ", mycursor.fetchall(), len(mycursor.fetchall()), type(mycursor.fetchall()))
+		# fetchone(), fectchmany(size), fetchall()
+		''' 
+		Método			Descrição
+		fetchone()		Retorna a próxima linha do resultado da consulta como uma tupla começando da primeira. Se não houver mais linhas, retorna None.
+		fetchmany(size)	Retorna o número especificado de linhas (definido por size) do resultado da consulta como uma lista de tuplas. Se não houver mais linhas, retorna o que estiver disponível.
+		fetchall()		Retorna todas as linhas do resultado da consulta como uma lista de tuplas. Este é o método que você mencionou.
+		'''
 		exit()
 		return True
 
 	except Exception as error:
-		print(error, type(error))
+		print("query falhou!", error, type(error))
 		return False
 
+def cadClient(name, address, contact):
+	'''
+		CREATE TABLE client(
+			id varchar(36),
+			name varchar(16),
+			address varchar(32),
+			contact varchar(32),
+			client_id int NOT NULL AUTO_INCREMENT,
+			user_id int,
+			PRIMARY KEY (client_id),
+			FOREIGN KEY (user_id) REFERENCES user(user_id)
+			);
+	'''
+	try:
+		start()
+		#command_extra(command_x)
+
+		cliente = Client(name, address, contact)
+		sql = "INSERT INTO client(id, name, address, contact) VALUES(%s, %s, %s, %s)"
+		values = (cliente.id, cliente.name, cliente.address, cliente.contact)
+
+		mycursor.execute(sql, values)
+		mydb.commit()
+		print(mycursor.lastrowid, mycursor.rowcount,  "Record Inserted")
+		print("fetch: ", mycursor.fetchall(), len(mycursor.fetchall()), type(mycursor.fetchall()))
+		# fetchone(), fectchmany(size), fetchall()
+		''' 
+		Método			Descrição
+		fetchone()		Retorna a próxima linha do resultado da consulta como uma tupla começando da primeira. Se não houver mais linhas, retorna None.
+		fetchmany(size)	Retorna o número especificado de linhas (definido por size) do resultado da consulta como uma lista de tuplas. Se não houver mais linhas, retorna o que estiver disponível.
+		fetchall()		Retorna todas as linhas do resultado da consulta como uma lista de tuplas. Este é o método que você mencionou.
+		'''
+		exit()
+		return True
+
+	except Exception as error:
+		print("query falhou!", error, type(error))
+		return False
+
+def cadProduct(name: str, category: str, unit: str)-> bool:
+	start()
+	try:
+		produto = Product(name, category, unit)
+		sql = "INSERT INTO product(id, name, category, unit) VALUES(%s, %s, %s, %s)"
+		values = (produt.id, produto.name, produto.category, produto.unit)
+		mycursor.execute(sql,values)
+		mydb.commit()
+		print(mycursor.lastrowid, mycursor.rowcount,  "Record Inserted")
+		print("fetch: ", mycursor.fetchall(), len(mycursor.fetchall()), type(mycursor.fetchall()))
+		# fetchone(), fectchmany(size), fetchall()
+		''' 
+		Método			Descrição
+		fetchone()		Retorna a próxima linha do resultado da consulta como uma tupla começando da primeira. Se não houver mais linhas, retorna None.
+		fetchmany(size)	Retorna o número especificado de linhas (definido por size) do resultado da consulta como uma lista de tuplas. Se não houver mais linhas, retorna o que estiver disponível.
+		fetchall()		Retorna todas as linhas do resultado da consulta como uma lista de tuplas. Este é o método que você mencionou.
+		'''
+		exit()
+		return True
+	except Exception as error:
+		print("query falhou!", error, type(error))
+		return False
+		
 def search_user(name=None, user_id=None, tipo=None, command_x=None):
 	start()
-	command_extra(command_x)
+	#command_extra(command_x)
 
 	n = []
 	u = []
@@ -198,26 +290,5 @@ def remove(u_id, command_x=None):
 	mydb.commit()
 	print(mycursor.rowcount, "Record(s) Deleted.")
 	exit()
-
-def login(name, password, command_x=None):
-	start()
-	command_extra(command_x)
-
-	results = search_user(name)[0]
-
-	for r in results:
-		if name in r:
-
-			#gerar hash do password
-			#h = hashlib.sha256()
-			#h.update(password.encoded())
-			#h.hexdigest()
-
-			if password == (r[2])[0:16] :
-				exit()
-				return True
-			else:
-				exit()
-				return False
 
 

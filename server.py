@@ -1,7 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
-import com_db as CDB
-import user
+from modulos.py import crud as CDB
 import teste
 import json
 
@@ -17,7 +16,6 @@ que permitem que os servidores descrevam um conjunto de origens que possuem perm
 
 @app.route('/login', methods=['POST'])
 def home():
-
 	# ------------ Recepcao do request----------------
 	'''
 	application/x-www-form-urlencoded
@@ -31,26 +29,26 @@ def home():
 		name = request.form["name_user"]
 		password = request.form["password"]
 		op_type = request.form["op_type"]
-
+		resposta = "OK"
 	elif request.headers["Content-Type"] == "text/html; charset=utf-8" :
 		name = request.form.get("name_user")
 		password = request.form.get("password")
 		op_type = request.form.get("op_type")
-
+		resposta = "OK"
 	elif request.headers["Content-Type"] == "application/json" :
 		name = request.json.get("name_user")
 		password = request.json.get("password")
 		op_type = request.json.get("op_type")
+		resposta = "OK"
 	else:
 		resposta = "content/media type do not supported: "+request.headers["Content-Type"]
-		print(resposta)
-		return resposta
+		#print(resposta)
+		
 	# ------------ Executar Testes --------------------
 
 	#print(request.json)
 	#teste.outhers()
 	
-
 	''' 
 	print(request.method)
 	print(request.status_code) 
@@ -80,46 +78,22 @@ def home():
 			resposta = "NOK"
 	elif op_type == "2" :
 		pass
-	elif op_type == "3" :
-		pass
-	elif op_type == "4" :
-		pass
-	elif op_type == "5" :
-		pass
-	elif op_type == "6" :
-		pass
 	else:
 		pass
 	'''
-	
-	match op_type:
 
-		case "1": #login
-			r = CDB.login(name, password)
-			if r :
-				resposta = "OK"
+	if resposta == "OK":
+		match op_type:
+			case "1": #login
+				r = CDB.login(name, password)
+				if r :
+					resposta = "OK"
+			case "2":
+				pass
 
-		case "2":
-			pass
+			case "_":
+					resposta = "NOK"
 
-		case "3":
-			pass
-
-		case "4":
-			pass
-
-		case "5":
-			pass
-
-		case "6":
-			pass
-
-		case "_":
-				resposta = "NOK"
-
-	
-	
-	
 	# ------------ Resposta --------------------------
 	return resposta
 
@@ -194,26 +168,7 @@ def cadastro():
 	'''
 
 	# ------------ Executar operacoes --------------------
-	'''
-	if op_type == "1" :	#login
-		r = CDB.login()
-		if r :
-			resposta = "OK"
-		else:
-			resposta = "NOK"
-	elif op_type == "2" :
-		pass
-	elif op_type == "3" :
-		pass
-	elif op_type == "4" :
-		pass
-	elif op_type == "5" :
-		pass
-	elif op_type == "6" :
-		pass
-	else:
-		pass
-	'''
+
 	if resposta == "OK":
 		match op_type:
 
@@ -225,6 +180,8 @@ def cadastro():
 				r = CDB.cadUser(name, password, tipo)
 				if r :
 					resposta = "OK"
+				else:
+					resposta = "NOK"
 
 			case "2.2": # cadastro de cliente.
 				name = arg1
@@ -234,8 +191,10 @@ def cadastro():
 				r = CDB.cadClient(name, address, contact)
 				if r :
 					resposta = "OK"
+				else:
+					resposta = "NOK"
 
-			case "2.3":
+			case "2.3": # cadastro de produtos.
 				product_name = arg1
 				category = arg2
 				unit = arg3
@@ -243,6 +202,8 @@ def cadastro():
 				r = CDB.cadProduct(product_name, category, unit)
 				if r :
 					resposta = "OK"
+				else:
+					resposta = "NOK"
 
 			case "_":
 					resposta = "op_type {op_type} invalid!"	
