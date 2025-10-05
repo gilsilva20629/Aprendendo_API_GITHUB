@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS
 from modulos.py import crud as CDB
-import teste
+from testes import teste
 import json
 
 
@@ -225,6 +225,11 @@ def products():
 	file.close()
 	return response
 	'''
+
+#def auth():
+
+#def token():
+	
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000 , debug=True)  # listen all ips
