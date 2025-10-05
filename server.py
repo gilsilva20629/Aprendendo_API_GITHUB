@@ -1,7 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
 from modulos.py import crud as CDB
-from testes import teste
 import json
 
 
