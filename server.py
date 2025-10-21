@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 from modulos.py import crud as CDB
 import json
+import os
 
 
 app = Flask(__name__)
@@ -231,5 +232,8 @@ def products():
 	
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000 , debug=True)  # listen all ips
-	#app.run(host="127.0.0.1", port=5000 , debug=True)  # listen localhost
+	if os.getenv('HOME') == "/home/susan":
+		app.run(host="127.0.0.1", port=5000 , debug=True)  # listen localhost
+	else:
+		app.run(host="0.0.0.0", port=5000 , debug=True)  # listen all ips
+	

@@ -10,8 +10,9 @@
 
 	<body>
 		<script>
-
+			
 			async function carregarProdutos(){
+				
 				try{
 					
 					const resposta  = await fetch("http://127.0.0.1:5000/products", {
@@ -65,10 +66,14 @@
 			}
 
 			carregarProdutos();
+
+			
 		</script>
 
 		<script>
+
 			console.log("Script2: ", window.produtos);
+
 		/*
 			fetch() é uma operação assíncrona. Quando você chama fetch(), o JavaScript não espera a requisição ser concluída antes de continuar executando o código subsequente. Isso significa que um segundo <script> pode rodar antes que a resposta do fetch() seja toda preenchido com os dados do servidor.		
 

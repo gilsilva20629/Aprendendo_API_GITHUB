@@ -19,7 +19,16 @@
 
 			function validateForm(event){
 				event.preventDefault();	// // Impede o envio imediato do formulário.
-
+			/*
+				console.log(window.location.hash);
+				console.log(window.location.host);
+				console.log(window.location.hostname);
+				console.log(window.location.href);
+				console.log(window.location.origin);
+				console.log(window.location.pathname);
+				console.log(window.location.port);
+				console.log(window.location.protocol);
+			*/
 				//Captura os campos
 				const name_user = document.getElementById("name_user").value;
 				const password = document.getElementById("password").value;
@@ -30,10 +39,14 @@
 				//console.log("In Validate...");
 
 				//document.getElementById("form1").submit();	//manda requisicao sem capturar retorno
-				
-				//fetch("https://aprendendoapigithub-production.up.railway.app/login", {
-				fetch("http://127.0.0.1:5000/login", {	// localhost teste
+		
+				if (window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1"){
+					let url = "http://127.0.0.1:5000/login";
+				}else{
+					let url = "https://aprendendoapigithub-production.up.railway.app/login";
+				}
 
+				fetch(url, {
 					method: 'POST',
                 	headers: {
                 		'Content-Type': 'application/json',
@@ -77,9 +90,9 @@
 		<h1> Cadastro Login & authentication Page</h1>
 		<!-- ###############  FORMULARIO  ############### -->
 		<form id="form1" action="https://aprendendoapigithub-production.up.railway.app/login" method="post" target="_blank" onsubmit="validateForm(event)">
-			<label>name user</label><br>
+			<label>Name User</label><br>
 			<input id="name_user" type="text" name="name_user" value="" required> </br>
-			<label>password<label><br>
+			<label>Password<label><br>
 			<input id="password" type="text" name="password" value="" required> <br>
 			<input type="hidden" id="op_type" name="op_type" value="1">
 			<br>
@@ -133,7 +146,7 @@
 		<noscript> Sorry, your browser does not support JavaScript! </noscript>
 		<br>
 		<br>
-		<a href="https://otreblig.w3spaces.com/oauth2_teste.html" target="_blank">oauth2</a>
+		<a href="./testes/authentication/Oauth.html" target="_blank">Oauth</a>
 		
 	</body>
 </html>
