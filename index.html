@@ -39,13 +39,11 @@
 				//console.log("In Validate...");
 
 				//document.getElementById("form1").submit();	//manda requisicao sem capturar retorno
-		
+				
+				const url = "https://aprendendoapigithub-production.up.railway.app/login";
 				if (window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1"){
 					const url = "http://127.0.0.1:5000/login";
-				}else{
-					const url = "https://aprendendoapigithub-production.up.railway.app/login";
 				}
-				
 
 				fetch(url, {
 					method: 'POST',
@@ -148,6 +146,6 @@
 		<br>
 		<br>
 		<a href="./testes/authentication/Oauth.html" target="_blank">Oauth</a>
-		
+
 	</body>
 </html>
