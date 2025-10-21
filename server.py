@@ -235,5 +235,5 @@ if __name__ == '__main__':
 	if os.getenv('HOME') == "/home/susan":
 		app.run(host="127.0.0.1", port=5000 , debug=True)  # listen localhost
 	else:
-		app.run(host="0.0.0.0", port=5000 , debug=True)  # listen all ips
+		app.run(host="0.0.0.0", port=448 , debug=True)  # listen all ips
 	
