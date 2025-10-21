@@ -41,10 +41,11 @@
 				//document.getElementById("form1").submit();	//manda requisicao sem capturar retorno
 		
 				if (window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1"){
-					let url = "http://127.0.0.1:5000/login";
+					const url = "http://127.0.0.1:5000/login";
 				}else{
-					let url = "https://aprendendoapigithub-production.up.railway.app/login";
+					const url = "https://aprendendoapigithub-production.up.railway.app/login";
 				}
+				
 
 				fetch(url, {
 					method: 'POST',
