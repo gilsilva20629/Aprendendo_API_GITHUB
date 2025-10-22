@@ -18,11 +18,11 @@ que permitem que os servidores descrevam um conjunto de origens que possuem perm
 def home():
     return send_from_directory('.', 'index.html')
 
-@app.route('/cadastro', methods=['GET'])
+@app.route('/cadastro.html', methods=['GET'])
 def page_cad():
     return send_from_directory('.', 'cadastro.html')
 
-@app.route('/shop', methods=['GET'])
+@app.route('/shop.html', methods=['GET'])
 def shop():
     return send_from_directory('.', 'shop.html')
 
