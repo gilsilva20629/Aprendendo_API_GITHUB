@@ -14,8 +14,12 @@ O padrão Cross-Origin Resource Sharing trabalha adicionando novos cabeçalhos H
 que permitem que os servidores descrevam um conjunto de origens que possuem permissão a ler uma informação usando o navegador.
 '''
 
-@app.route('/login', methods=['POST'])
+@app.route('/', method=['GET'])
 def home():
+    return send_from_directory('static', 'index.html')
+
+@app.route('/login', methods=['POST'])
+def login():
 	# ------------ Recepcao do request----------------
 	'''
 	application/x-www-form-urlencoded
@@ -235,5 +239,5 @@ if __name__ == '__main__':
 	if os.getenv('HOME') == "/home/susan":
 		app.run(host="127.0.0.1", port=5000 , debug=True)  # listen localhost
 	else:
-		app.run(host="0.0.0.0", port=448 , debug=True)  # listen all ips
+		app.run(host="0.0.0.0", port=5000 , debug=True)  # listen all ips
 	
