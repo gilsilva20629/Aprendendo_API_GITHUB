@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 from flask_cors import CORS
 from modulos.py import crud as CDB
 import json
@@ -14,9 +14,9 @@ O padrão Cross-Origin Resource Sharing trabalha adicionando novos cabeçalhos H
 que permitem que os servidores descrevam um conjunto de origens que possuem permissão a ler uma informação usando o navegador.
 '''
 
-@app.route('/', method=['GET'])
+@app.route('/', methods=['GET'])
 def home():
-    return send_from_directory('static', 'index.html')
+    return send_from_directory('.', 'index.html')
 
 @app.route('/login', methods=['POST'])
 def login():
