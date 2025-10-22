@@ -19,7 +19,13 @@ function validateForm(event){
 	feedbackClear();
 	let form = event.target; // 'target' elemento que disparou o evento
 	//console.log("Detalhes do evento: ", event, event.target);
-	let url = "http://127.0.0.1:5000/cadastro";
+
+
+	const url = "https://aprendendoapigithub-production.up.railway.app/cadastro.html";
+	if (window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1"){
+		url = "http://127.0.0.1:5000/cadastro.html";
+	}	
+
 	let feedback_user = window.document.getElementById("frm-user");
 	let feedback_client = window.document.getElementById("frm-client");
 	let feedback_product = window.document.getElementById("frm-product");
