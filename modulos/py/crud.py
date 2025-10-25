@@ -7,7 +7,7 @@ def start():
 
 	#obtendo variaveis locais
 	#HOST = os.getenv("HOST")
-	PWD = os.getenv("PWD")
+	HOSTNAME = os.getenv("HOSTNAME")
 	#print("Ambiente: ", PWD)
 
 
@@ -22,9 +22,7 @@ def start():
 	global mydb, mycursor
 
 	try:
-		
-		#if HOST != "127.0.0.1" and HOST != "localhost" :	--> não testado.
-		if PWD != "/home/susan/Python/github_dir_local/Aprendendo_API_GITHUB":
+		if HOSTNAME != "susan-linux":			#variaveis remotas railway.com
 			mydb = mysql.connector.connect(
 				host = os.getenv("MYSQLHOST"),
 				port = os.getenv("MYSQLPORT"),
