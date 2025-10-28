@@ -1,15 +1,15 @@
 import mysql.connector
 import os                #usada para ppegar as variaveis de ambiente.
 import hashlib
-from modulos.py.person import User, Client, Product
+from modulos.py.entites import User, Client, Product
+
 
 def start():
 
 	#obtendo variaveis locais
 	#HOST = os.getenv("HOST")
-	HOSTNAME = os.getenv("HOSTNAME")
-	#print("Ambiente: ", PWD)
-
+	USER = os.getenv("USER")
+	print("Ambiente: ", USER)
 
 	#obtendo variaveis remotas railway.com
 	MYSQLHOST = os.getenv("MYSQLHOST")
@@ -19,10 +19,8 @@ def start():
 	MYSQLDATABASE = os.getenv("MYSQLDATABASE")
 	DATABASE_URL = os.getenv("DATABASE_URL")
 
-	global mydb, mycursor
-
 	try:
-		if HOSTNAME != "susan-linux":			#variaveis remotas railway.com
+		if USER != "susan":			#variaveis remotas railway.com
 			mydb = mysql.connector.connect(
 				host = os.getenv("MYSQLHOST"),
 				port = os.getenv("MYSQLPORT"),
@@ -30,21 +28,23 @@ def start():
 				password = os.getenv("MYSQLPASSWORD"),
 				database = os.getenv("MYSQLDATABASE")
 			)
+			print("Connected in DB railway...")
 		else:
 			mydb = mysql.connector.connect(
 				host = "localhost",
 				user = "root",
 				password = "Nsg@2024",
 				database ="db_teste01"
-				)
+			)
+			print("Connected in DB localhost...")
 
 	except Exception as err:
 		print(err, type(err))
-		return "Erro: Não foi possivel conectar ao database!"
+		print("Erro: Não foi possivel conectar ao database!")
 	
 	mycursor = mydb.cursor()
 
-	return "Connected in BD..."
+	return mydb, mycursor
 
 	'''
 	mycursor.execute("SHOW TABLES")
@@ -124,17 +124,15 @@ def login(name:  str, password: str, command_x=None)-> bool:
 			#h.hexdigest()
 
 			if password == (r[2])[0:16] :
-				exit()
 				return True
 			else:
-				exit()
 				return False
-
+	exit()
 
 
 def cadUser(name: str, password: str, tipo: str, command_x=None)-> bool:
+	mydb, mycursor = start()
 	try:
-		start()
 		#command_extra(command_x)
 
 		usuario = User(name, password, tipo)
@@ -152,14 +150,16 @@ def cadUser(name: str, password: str, tipo: str, command_x=None)-> bool:
 		fetchmany(size)	Retorna o número especificado de linhas (definido por size) do resultado da consulta como uma lista de tuplas. Se não houver mais linhas, retorna o que estiver disponível.
 		fetchall()		Retorna todas as linhas do resultado da consulta como uma lista de tuplas. Este é o método que você mencionou.
 		'''
-		exit()
+		
 		return True
 
 	except Exception as error:
 		print("query falhou!", error, type(error))
 		return False
+	exit()
 
 def cadClient(name, address, contact):
+	mydb, mycursor = start()
 	'''
 		CREATE TABLE client(
 			id varchar(36),
@@ -173,7 +173,6 @@ def cadClient(name, address, contact):
 			);
 	'''
 	try:
-		start()
 		#command_extra(command_x)
 
 		cliente = Client(name, address, contact)
@@ -191,23 +190,25 @@ def cadClient(name, address, contact):
 		fetchmany(size)	Retorna o número especificado de linhas (definido por size) do resultado da consulta como uma lista de tuplas. Se não houver mais linhas, retorna o que estiver disponível.
 		fetchall()		Retorna todas as linhas do resultado da consulta como uma lista de tuplas. Este é o método que você mencionou.
 		'''
-		exit()
+		
 		return True
 
 	except Exception as error:
 		print("query falhou!", error, type(error))
 		return False
+	exit()
 
-def cadProduct(name: str, category: str, unit: str)-> bool:
-	start()
+def cadProduct(product_name: str, category: str, unit: str)-> bool:
+	mydb, mycursor = start()
 	try:
-		produto = Product(name, category, unit)
+		
+		produto = Product(product_name, category, unit)
 		sql = "INSERT INTO product(id, name, category, unit) VALUES(%s, %s, %s, %s)"
 		values = (produto.id, produto.name, produto.category, produto.unit)
-		mycursor.execute(sql,values)
+		mycursor.execute(sql, values)
 		mydb.commit()
-		print("Reg. n°: ", mycursor.lastrowid, mycursor.rowcount,  "Record Inserted")
-		print("fetch: ", mycursor.fetchall(), len(mycursor.fetchall()), type(mycursor.fetchall()))
+		print("Reg. n°: ", mycursor.lastrowid, mycursor.rowcount,  "Record Inserted,", "fetch: ", mycursor.fetchall(), len(mycursor.fetchall()), type(mycursor.fetchall()))
+		#print("fetch: ", mycursor.fetchall(), len(mycursor.fetchall()), type(mycursor.fetchall()))
 		# fetchone(), fectchmany(size), fetchall()
 		''' 
 		Método			Descrição
@@ -215,14 +216,16 @@ def cadProduct(name: str, category: str, unit: str)-> bool:
 		fetchmany(size)	Retorna o número especificado de linhas (definido por size) do resultado da consulta como uma lista de tuplas. Se não houver mais linhas, retorna o que estiver disponível.
 		fetchall()		Retorna todas as linhas do resultado da consulta como uma lista de tuplas. Este é o método que você mencionou.
 		'''
-		exit()
+		
 		return True
 	except Exception as error:
 		print("query falhou!", error, type(error))
 		return False
 
+	exit()
+
 def search_user(name=None, user_id=None, tipo=None, command_x=None):
-	start()
+	mydb, mycursor = start()
 	#command_extra(command_x)
 
 	n = []
@@ -269,20 +272,21 @@ def search_user(name=None, user_id=None, tipo=None, command_x=None):
 					#print(i)
 					g.append(i)
 		
-	exit()
-	return n, u, g
 	
+	return n, u, g
+	exit()
 		
 def list_users(command_x=None):
-	start()
+	mydb, mycursor = start()
 	command_extra(command_x)
 	mycursor.execute("SELECT user_id, name, tipo FROM user")
 	results = mycursor.fetchall()
-	exit()
+	
 	return results
+	exit()
 
 def remove(u_id, command_x=None):
-	start()
+	mydb, mycursor = start()
 	command_extra(command_x)
 	mycursor.execute(f"DELETE FROM user WHERE user_id={u_id}")
 	mydb.commit()

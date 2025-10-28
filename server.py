@@ -14,17 +14,20 @@ O padrão Cross-Origin Resource Sharing trabalha adicionando novos cabeçalhos H
 que permitem que os servidores descrevam um conjunto de origens que possuem permissão a ler uma informação usando o navegador.
 '''
 
+#<servidor WEB>#########################################
 @app.route('/', methods=['GET'])
-def home():
+def home_page():
     return send_from_directory('.', 'index.html')
 
 @app.route('/cadastro.html', methods=['GET'])
-def page_cad():
+def cadastro_page():
     return send_from_directory('.', 'cadastro.html')
 
 @app.route('/shop.html', methods=['GET'])
-def shop():
+def shop_page():
     return send_from_directory('.', 'shop.html')
+
+#</servidor WEB>#########################################
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -110,7 +113,7 @@ def login():
 	return resposta
 
 @app.route("/cadastro", methods=['POST'])
-def cadastro():
+def cadastros():
 
 	# ------------ Recepcao do request----------------
 	'''
@@ -187,7 +190,7 @@ def cadastro():
 			case "2.1": #Cadastro de usuario.
 				name = arg1
 				password = arg2
-				tipo =arg3
+				tipo = arg3
 
 				r = CDB.cadUser(name, password, tipo)
 				if r :
@@ -222,7 +225,7 @@ def cadastro():
 
 		return resposta
 	else:
-		return "NOK"
+		return resposta
 
 @app.route("/products", methods=["GET"])
 def products():

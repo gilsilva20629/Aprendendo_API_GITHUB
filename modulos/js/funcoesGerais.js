@@ -21,10 +21,12 @@ function validateForm(event){
 	//console.log("Detalhes do evento: ", event, event.target);
 
 
-	const url = "https://aprendendoapigithub-production.up.railway.app/cadastro.html";
-	if (window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1"){
-		url = "http://127.0.0.1:5000/cadastro.html";
+	let url = "https://aprendendoapigithub-production.up.railway.app/cadastro";
+	if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"){
+		url = "http://127.0.0.1:5000/cadastro";
 	}	
+	console.log("hostname: ", window.location.hostname);
+	console.log("url: ", url);
 
 	let feedback_user = window.document.getElementById("frm-user");
 	let feedback_client = window.document.getElementById("frm-client");
@@ -83,7 +85,7 @@ function validateForm(event){
 			body: JSON.stringify({
 				"arg1": name,
 				"arg2": address,
-				"arg3":contact,
+				"arg3": contact,
 				"arg4": op_type
 			})
 		})

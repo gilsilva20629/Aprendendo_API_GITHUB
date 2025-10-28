@@ -1,7 +1,7 @@
 import random
 import hashlib
 import uuid
-#from abc import ABC, @AbstractBaseClasses
+
 
 symbol = "abcdefghijklmnopqrstuvxywz0123456789_!@#$%&" # [0:25] [26:35] [36:42]
 tipos = ["normal", "manager", "admin"]
@@ -38,10 +38,8 @@ print(password)
 print(tipo)
 '''
 
-class Person():
-	pass
 
-class User(Person):
+class User():
 
 	def __init__(self, name:str, password:str, tipo:str):
 		#self.id = random.randint(1,10000)
@@ -51,7 +49,7 @@ class User(Person):
 		self.tipo = tipo
 		#self.tipo_teste = random.choices(tipos, weights=pesos, k=1)[0]
 
-class Client(Person):
+class Client():
 	
 	'''
 		CREATE TABLE client(
@@ -72,7 +70,7 @@ class Client(Person):
 		self.address = address
 		self.contact = contact
 
-class Product(Person):
+class Product():
 
 	def __init__(self, name: str, category: str, unit: str):
 		self.id = str(uuid.uuid4())
