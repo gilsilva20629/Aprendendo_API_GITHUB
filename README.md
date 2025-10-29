@@ -1,5 +1,5 @@
-# Aprendendo_API_GITHUB
-Estudando API do github
+# Estudando programacao
+Estudando programacao
 
 Dominio railway: aprendendoapigithub-production.up.railway.app
 Dominio railway: https://aprendendoapigithub-production.up.railway.app
