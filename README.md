@@ -1,5 +1,4 @@
 # Estudando programacao
-Estudando programacao
 
 Dominio railway: aprendendoapigithub-production.up.railway.app
 Dominio railway: https://aprendendoapigithub-production.up.railway.app
