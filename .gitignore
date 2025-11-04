@@ -7,3 +7,4 @@ output.txt
 testes/
 .env/
 .dockerignore
+secundary_branch.txt
